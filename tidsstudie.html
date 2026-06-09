@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tidsstudie – Prodlytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f8fa;
+  --bg2: #ffffff;
+  --bg3: #f0f2f5;
+  --border: #d0d7de;
+  --border2: #e8ecf0;
+  --accent: #1a56db;
+  --accent-dim: rgba(26,86,219,0.07);
+  --accent-border: rgba(26,86,219,0.2);
+  --green: #1a7f37;
+  --green-dim: rgba(26,127,55,0.08);
+  --red: #cf222e;
+  --red-dim: rgba(207,34,46,0.08);
+  --yellow: #9a6700;
+  --yellow-dim: rgba(154,103,0,0.08);
+  --text: #1f2328;
+  --text-muted: #636c76;
+  --text-dim: #9198a1;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 15px; }
+h1,h2,h3,h4 { font-family: 'Barlow Condensed', sans-serif; }
+
+/* HEADER */
+.header {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 2rem;
+  display: flex; align-items: center; gap: 1.2rem;
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--accent); letter-spacing: 0.05em; }
+.logo-sep { color: var(--border); font-size: 1.2rem; }
+.header-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+.header-actions { margin-left: auto; display: flex; gap: 0.6rem; }
+
+/* BUTTONS */
+.btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.5rem 1.1rem; border-radius: 6px;
+  border: 1px solid transparent; cursor: pointer;
+  transition: all 0.15s; white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: white; border-color: var(--accent); }
+.btn-primary:hover { background: #1648c0; }
+.btn-ghost { background: var(--bg2); color: var(--text-muted); border-color: var(--border); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-danger { background: white; color: var(--red); border-color: #fcc; }
+.btn-danger:hover { background: var(--red-dim); }
+.btn-green { background: var(--green); color: white; border-color: var(--green); }
+.btn-green:hover { filter: brightness(1.1); }
+.btn-sm { font-size: 0.75rem; padding: 0.35rem 0.75rem; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* LAYOUT */
+.page { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.section { margin-bottom: 2rem; }
+.section + .section { padding-top: 0; }
+
+/* GUIDE */
+.guide {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.guide-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.9rem;
+}
+.guide-steps { display: flex; gap: 1rem; flex-wrap: wrap; }
+.guide-step { display: flex; align-items: flex-start; gap: 0.6rem; flex: 1; min-width: 160px; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--accent); color: white;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.step-text { font-size: 0.83rem; color: var(--text); line-height: 1.4; }
+.step-text strong { color: var(--accent); }
+
+/* CARD */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.card-head {
+  padding: 0.9rem 1.4rem;
+  border-bottom: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg3);
+}
+.card-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.card-body { padding: 1.4rem; }
+
+/* INFO GRID */
+.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+.field label {
+  display: block; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 0.35rem;
+}
+.field input, .field select {
+  width: 100%; padding: 0.55rem 0.8rem;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 6px; color: var(--text);
+  font-family: 'Barlow', sans-serif; font-size: 0.88rem;
+}
+.field input:focus, .field select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+
+/* OPERATIONS */
+.ops-list { display: flex; flex-direction: column; gap: 0.6rem; padding: 1.4rem; }
+.op-row {
+  display: grid;
+  grid-template-columns: 32px 1fr 140px 110px 80px 36px;
+  gap: 0.6rem; align-items: center;
+  padding: 0.7rem 0.8rem;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  transition: border-color 0.15s;
+}
+.op-row:hover { border-color: var(--border); }
+.op-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem; font-weight: 800;
+  color: white; flex-shrink: 0;
+}
+.op-input {
+  padding: 0.45rem 0.7rem;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 6px; color: var(--text);
+  font-family: 'Barlow', sans-serif; font-size: 0.88rem;
+  width: 100%;
+}
+.op-input:focus { outline: none; border-color: var(--accent); }
+.op-select {
+  padding: 0.45rem 0.7rem;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 6px; color: var(--text);
+  font-family: 'Barlow', sans-serif; font-size: 0.82rem;
+  width: 100%;
+}
+.op-select:focus { outline: none; border-color: var(--accent); }
+.add-op-area { padding: 0 1.4rem 1.4rem; }
+.preset-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.6rem; }
+.preset-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.preset-tag {
+  padding: 0.3rem 0.7rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 20px; font-size: 0.78rem; color: var(--text-muted);
+  cursor: pointer; transition: all 0.15s;
+  font-family: 'Barlow', sans-serif;
+}
+.preset-tag:hover { background: var(--accent-dim); border-color: var(--accent-border); color: var(--accent); }
+
+/* TIMER */
+.timer-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+.timer-inner { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.timer-left { }
+.timer-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem; }
+.timer-digits {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 4rem; font-weight: 800;
+  color: var(--text); letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.timer-digits.running { color: var(--green); }
+.timer-right { flex: 1; min-width: 260px; }
+.timer-op-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+.timer-op-sel {
+  width: 100%; padding: 0.6rem 0.8rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 6px; color: var(--text);
+  font-family: 'Barlow', sans-serif; font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+.timer-op-sel:focus { outline: none; border-color: var(--accent); }
+.timer-btns { display: flex; gap: 0.6rem; }
+.shortcut-hint { font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem; }
+.shortcut-hint kbd {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 4px; padding: 0.1rem 0.4rem;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem;
+}
+
+/* TABS */
+.tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; background: var(--bg2); border-radius: 10px 10px 0 0; overflow: hidden; border: 1px solid var(--border); }
+.tab-btn {
+  flex: 1; padding: 0.85rem 1rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: none; border: none; cursor: pointer;
+  color: var(--text-muted); border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.tab-btn:hover { color: var(--text); background: var(--bg3); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--accent-dim); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* MEASUREMENTS */
+.meas-section { margin-bottom: 1.5rem; }
+.meas-section-head {
+  display: flex; align-items: center; gap: 0.8rem;
+  padding: 0.8rem 1.2rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+}
+.meas-op-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; }
+.meas-avg { margin-left: auto; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; color: var(--accent); font-weight: 700; }
+.meas-table-wrap {
+  border: 1px solid var(--border);
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+table.mt { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+table.mt th {
+  text-align: left; padding: 0.55rem 1rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted); background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+table.mt td { padding: 0.55rem 1rem; border-bottom: 1px solid var(--border2); vertical-align: middle; }
+table.mt tr:last-child td { border-bottom: none; }
+table.mt tr:hover td { background: var(--bg3); }
+.time-pill {
+  display: inline-block; padding: 0.2rem 0.6rem;
+  border-radius: 20px; font-weight: 600;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem;
+}
+.time-pill.normal { background: var(--accent-dim); color: var(--accent); }
+.time-pill.outlier { background: var(--red-dim); color: var(--red); }
+.time-pill.fast { background: var(--green-dim); color: var(--green); }
+.rating-sel {
+  padding: 0.25rem 0.5rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 4px; color: var(--text); font-size: 0.8rem;
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ANALYSIS STATS */
+.sum-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.sum-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem; }
+.sum-box.primary { border-color: var(--accent-border); background: var(--accent-dim); }
+.sum-lbl { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
+.sum-val { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--text); line-height: 1; }
+.sum-val.blue { color: var(--accent); }
+.sum-val.green { color: var(--green); }
+.sum-val.red { color: var(--red); }
+.sum-val.yellow { color: var(--yellow); }
+.sum-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem; }
+.progress-bar { height: 5px; background: var(--border2); border-radius: 3px; margin-top: 0.5rem; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 3px; transition: width 0.4s; }
+.status-badge {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.2rem 0.6rem; border-radius: 20px;
+  font-size: 0.75rem; font-weight: 600;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+.status-ok { background: var(--green-dim); color: var(--green); }
+.status-warn { background: var(--red-dim); color: var(--red); }
+.status-info { background: var(--yellow-dim); color: var(--yellow); }
+
+/* NOTES */
+.notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.notes-field label { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+.notes-ta { width: 100%; padding: 0.7rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: 'Barlow', sans-serif; font-size: 0.88rem; resize: vertical; min-height: 100px; }
+.notes-ta:focus { outline: none; border-color: var(--accent); }
+
+/* EMPTY */
+.empty { text-align: center; padding: 3rem 2rem; color: var(--text-dim); }
+.empty-ico { font-size: 2.5rem; margin-bottom: 0.6rem; opacity: 0.35; }
+.empty p { font-size: 0.88rem; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--text); color: white; padding: 0.7rem 1.1rem; border-radius: 8px; font-size: 0.85rem; transform: translateY(60px); opacity: 0; transition: all 0.2s; z-index: 999; }
+.toast.show { transform: translateY(0); opacity: 1; }
+
+@media print {
+  .header, .guide, .timer-card, .tabs, .no-print, .btn { display: none !important; }
+  body { background: white; }
+  .card { border: 1px solid #ddd; break-inside: avoid; }
+  .tab-panel { display: block !important; }
+}
+@media(max-width:700px) {
+  .page { padding: 1rem; }
+  .op-row { grid-template-columns: 28px 1fr 36px; }
+  .op-row .op-select, .op-row .op-input:last-of-type { display: none; }
+  .notes-grid { grid-template-columns: 1fr; }
+  .timer-digits { font-size: 3rem; }
+  .guide-steps { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">PRODLYTICS</div>
+  <span class="logo-sep">/</span>
+  <div class="header-title">Tidsstudie</div>
+  <div class="header-actions no-print">
+    <button class="btn btn-ghost btn-sm" onclick="resetAll()">↺ Rensa</button>
+    <button class="btn btn-primary btn-sm" onclick="exportPDF()">⬇ Exportera PDF</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- GUIDE -->
+  <div class="guide">
+    <div class="guide-title">📖 Så här gör du</div>
+    <div class="guide-steps">
+      <div class="guide-step">
+        <div class="step-num">1</div>
+        <div class="step-text">Fyll i <strong>studieinformation</strong> – företag, operatör, datum</div>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">2</div>
+        <div class="step-text">Lägg till <strong>operationer</strong> du vill mäta – välj från preset eller skriv egna</div>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">3</div>
+        <div class="step-text">Välj operation i stoppuret → <strong>Starta</strong> → <strong>Registrera</strong> när klar. Upprepa per cykel</div>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">4</div>
+        <div class="step-text">Justera <strong>normering</strong> per mätning om operatörens tempo avviker</div>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">5</div>
+        <div class="step-text">Se <strong>analys</strong> med snittid, normtid, standardtid och kapacitet</div>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">6</div>
+        <div class="step-text"><strong>Exportera PDF</strong> för rapport eller arkivering</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDIEINFORMATION -->
+  <div class="card">
+    <div class="card-head">
+      <span class="card-label">📋 Studieinformation</span>
+    </div>
+    <div class="card-body">
+      <div class="info-grid">
+        <div class="field"><label>Företag</label><input type="text" id="company" placeholder="Företagsnamn"></div>
+        <div class="field"><label>Avdelning / Linje</label><input type="text" id="dept" placeholder="T.ex. Montering A"></div>
+        <div class="field"><label>Operatör</label><input type="text" id="operator" placeholder="Namn"></div>
+        <div class="field"><label>Studieutförare</label><input type="text" id="analyst" placeholder="Ditt namn"></div>
+        <div class="field"><label>Datum</label><input type="date" id="studyDate"></div>
+        <div class="field">
+          <label>Skift</label>
+          <select id="shift">
+            <option value="">Välj skift</option>
+            <option>Dagskift</option><option>Kvällsskift</option><option>Nattskift</option>
+          </select>
+        </div>
+        <div class="field"><label>Produkt / Artikel</label><input type="text" id="product" placeholder="Artikelnummer"></div>
+        <div class="field"><label>Mätningsmål (antal)</label><input type="number" id="targetN" value="10" min="1" placeholder="10"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPERATIONER -->
+  <div class="card">
+    <div class="card-head">
+      <span class="card-label">⚙️ Operationer att mäta</span>
+      <button class="btn btn-ghost btn-sm no-print" onclick="addOp()">+ Lägg till tom</button>
+    </div>
+    <div class="ops-list" id="opsList"></div>
+    <div class="add-op-area no-print">
+      <div class="preset-title">Snabbval – klicka för att lägga till</div>
+      <div class="preset-tags" id="presetTags"></div>
+    </div>
+  </div>
+
+  <!-- STOPPUR -->
+  <div class="timer-card no-print">
+    <div class="timer-inner">
+      <div class="timer-left">
+        <div class="timer-label">Stoppur</div>
+        <div class="timer-digits" id="timerDisplay">00:00.0</div>
+      </div>
+      <div class="timer-right">
+        <div class="timer-op-label">Välj operation att mäta</div>
+        <select class="timer-op-sel" id="timerOpSel">
+          <option value="">Välj operation...</option>
+        </select>
+        <div class="timer-btns">
+          <button class="btn btn-green" id="btnStart" onclick="startTimer()">▶ Starta</button>
+          <button class="btn btn-primary" id="btnLap" onclick="lapTimer()" disabled>⏱ Registrera</button>
+          <button class="btn btn-ghost" id="btnStop" onclick="stopTimer()" disabled>■ Stoppa</button>
+        </div>
+        <div class="shortcut-hint">Snabbkommando: <kbd>Mellanslag</kbd> = Starta / Registrera</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs no-print">
+    <button class="tab-btn active" onclick="switchTab('meas',this)">Mätningar</button>
+    <button class="tab-btn" onclick="switchTab('analysis',this)">Analys</button>
+    <button class="tab-btn" onclick="switchTab('notes',this)">Anteckningar</button>
+  </div>
+
+  <!-- MÄTNINGAR -->
+  <div class="tab-panel active" id="tab-meas">
+    <div id="measOut"><div class="empty"><div class="empty-ico">⏱</div><p>Inga mätningar ännu.<br>Starta stoppuret och tryck Registrera.</p></div></div>
+  </div>
+
+  <!-- ANALYS -->
+  <div class="tab-panel" id="tab-analysis">
+    <div id="analysisOut"><div class="empty"><div class="empty-ico">📊</div><p>Lägg till mätningar för att se analys.</p></div></div>
+  </div>
+
+  <!-- ANTECKNINGAR -->
+  <div class="tab-panel" id="tab-notes">
+    <div class="card">
+      <div class="card-head"><span class="card-label">📝 Anteckningar</span></div>
+      <div class="card-body">
+        <div class="notes-grid">
+          <div class="notes-field">
+            <label>Allmänna observationer</label>
+            <textarea class="notes-ta" id="notesGeneral" placeholder="Observationer, avvikelser, omgivningsförhållanden..."></textarea>
+          </div>
+          <div class="notes-field">
+            <label>Störningar & avbrott</label>
+            <textarea class="notes-ta" id="notesInterrupt" placeholder="Maskinstopp, materialbrister, personliga avbrott..."></textarea>
+          </div>
+          <div class="notes-field">
+            <label>Ergonomi & arbetsplats</label>
+            <textarea class="notes-ta" id="notesErgo" placeholder="Ergonomiska observationer, layoutproblem, onödiga rörelser..."></textarea>
+          </div>
+          <div class="notes-field">
+            <label>Förbättringsförslag</label>
+            <textarea class="notes-ta" id="notesImprov" placeholder="Idéer för effektivisering, standardisering, Lean-åtgärder..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA ──
+let ops = [];
+let meas = [];
+let timerRunning = false;
+let timerStart = null;
+let timerElapsed = 0;
+let timerInterval = null;
+
+const PALETTE = ['#1a56db','#0891b2','#059669','#7c3aed','#db2777','#ea580c','#ca8a04','#475569','#b45309','#0f766e','#4f46e5','#be185d'];
+
+const PRESETS = [
+  { name:'Hämta material', type:'Transport' },
+  { name:'Positionering', type:'Manuell' },
+  { name:'Fixturering', type:'Manuell' },
+  { name:'Bearbetning', type:'Maskin' },
+  { name:'Svetsning', type:'Manuell' },
+  { name:'Montering', type:'Manuell' },
+  { name:'Skruvdragning', type:'Manuell' },
+  { name:'Kontroll / Mätning', type:'Kontroll' },
+  { name:'Märkning / Etikett', type:'Manuell' },
+  { name:'Nedläggning', type:'Transport' },
+  { name:'Maskinstart', type:'Maskin' },
+  { name:'Maskinövervakning', type:'Maskin' },
+  { name:'Verktygsyte', type:'Ställtid' },
+  { name:'Rengöring', type:'Underhåll' },
+  { name:'Väntan maskin', type:'Väntan' },
+  { name:'Väntan material', type:'Väntan' },
+  { name:'Plockning', type:'Transport' },
+  { name:'Packning', type:'Manuell' },
+  { name:'Dokumentation', type:'Administrativ' },
+  { name:'Kvalitetskontroll', type:'Kontroll' },
+  { name:'Lödning', type:'Manuell' },
+  { name:'Pressning', type:'Maskin' },
+  { name:'Härdning / Torkning', type:'Maskin' },
+  { name:'Slutmontage', type:'Manuell' },
+];
+
+const OP_TYPES = ['Manuell','Maskin','Transport','Kontroll','Väntan','Ställtid','Underhåll','Administrativ'];
+
+// ── INIT ──
+document.getElementById('studyDate').value = new Date().toISOString().split('T')[0];
+renderPresets();
+addOp('Förberedelse','Transport','');
+addOp('Montering','Manuell','');
+addOp('Kontroll','Kontroll','');
+addOp('Nedläggning','Transport','');
+
+// ── PRESETS ──
+function renderPresets() {
+  document.getElementById('presetTags').innerHTML = PRESETS.map(p =>
+    `<span class="preset-tag" onclick="addOp('${p.name}','${p.type}','')">${p.name}</span>`
+  ).join('');
+}
+
+// ── OPERATIONS ──
+function addOp(name='', type='Manuell', req='') {
+  const id = Date.now() + Math.random();
+  const color = PALETTE[ops.length % PALETTE.length];
+  ops.push({ id, name, type, req, color });
+  renderOps();
+  updateTimerOps();
+}
+
+function removeOp(id) {
+  ops = ops.filter(o => o.id !== id);
+  renderOps();
+  updateTimerOps();
+  renderMeas();
+}
+
+function updateOpField(id, field, val) {
+  const op = ops.find(o => o.id === id);
+  if (op) { op[field] = val; updateTimerOps(); }
+}
+
+function renderOps() {
+  const list = document.getElementById('opsList');
+  if (ops.length === 0) {
+    list.innerHTML = '<div class="empty"><p>Inga operationer – lägg till eller välj från snabbval nedan</p></div>';
+    return;
+  }
+  list.innerHTML = ops.map((op, i) => `
+    <div class="op-row">
+      <div class="op-num" style="background:${op.color}">${i+1}</div>
+      <input class="op-input" type="text" value="${op.name}" placeholder="Operationsnamn" onchange="updateOpField(${op.id},'name',this.value)">
+      <select class="op-select" onchange="updateOpField(${op.id},'type',this.value)">
+        ${OP_TYPES.map(t=>`<option ${op.type===t?'selected':''}>${t}</option>`).join('')}
+      </select>
+      <input class="op-input" type="number" value="${op.req}" placeholder="Krav (sek)" onchange="updateOpField(${op.id},'req',this.value)" style="width:100%">
+      <span style="font-size:0.72rem;color:var(--text-dim);text-align:center">${meas.filter(m=>m.opId===op.id).length} mät.</span>
+      <button class="btn btn-danger btn-sm no-print" onclick="removeOp(${op.id})">✕</button>
+    </div>`).join('');
+}
+
+// ── TIMER ──
+function updateTimerOps() {
+  const sel = document.getElementById('timerOpSel');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">Välj operation...</option>' +
+    ops.map((op,i) => `<option value="${op.id}" ${cur==op.id?'selected':''}>${i+1}. ${op.name||'Operation '+(i+1)}</option>`).join('');
+}
+
+function startTimer() {
+  if (timerRunning) return;
+  timerRunning = true;
+  timerStart = Date.now() - timerElapsed;
+  timerInterval = setInterval(() => {
+    timerElapsed = Date.now() - timerStart;
+    document.getElementById('timerDisplay').textContent = fmtTimer(timerElapsed);
+  }, 100);
+  document.getElementById('timerDisplay').classList.add('running');
+  document.getElementById('btnStart').disabled = true;
+  document.getElementById('btnLap').disabled = false;
+  document.getElementById('btnStop').disabled = false;
+}
+
+function lapTimer() {
+  const opId = parseFloat(document.getElementById('timerOpSel').value);
+  if (!opId) { showToast('⚠ Välj operation först'); return; }
+  const op = ops.find(o => o.id === opId);
+  if (!op) return;
+  const secs = timerElapsed / 1000;
+  meas.push({ id: Date.now(), opId, opName: op.name||'Op', opColor: op.color, time: secs, rating: 100, ts: new Date().toLocaleTimeString('sv-SE') });
+  timerElapsed = 0;
+  timerStart = Date.now();
+  renderOps();
+  renderMeas();
+  renderAnalysis();
+  showToast(`✓ ${op.name||'Op'}: ${secs.toFixed(1)}s`);
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+  timerRunning = false; timerElapsed = 0;
+  document.getElementById('timerDisplay').textContent = '00:00.0';
+  document.getElementById('timerDisplay').classList.remove('running');
+  document.getElementById('btnStart').disabled = false;
+  document.getElementById('btnLap').disabled = true;
+  document.getElementById('btnStop').disabled = true;
+}
+
+function fmtTimer(ms) {
+  const m = Math.floor(ms/60000), s = Math.floor((ms%60000)/1000), t = Math.floor((ms%1000)/100);
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${t}`;
+}
+
+function fmtS(s) {
+  if (s >= 60) return `${Math.floor(s/60)}m ${(s%60).toFixed(1)}s`;
+  return s.toFixed(1) + 's';
+}
+
+// ── MEASUREMENTS ──
+function removeMeas(id) { meas = meas.filter(m=>m.id!==id); renderMeas(); renderAnalysis(); renderOps(); }
+function setRating(id, val) { const m = meas.find(x=>x.id===id); if(m){m.rating=parseInt(val);renderAnalysis();} }
+
+function renderMeas() {
+  const out = document.getElementById('measOut');
+  const total = meas.length;
+  document.querySelectorAll && null;
+  if (total === 0) { out.innerHTML = '<div class="empty"><div class="empty-ico">⏱</div><p>Inga mätningar ännu.<br>Starta stoppuret och tryck Registrera.</p></div>'; return; }
+
+  let html = `<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem">${total} mätningar totalt</div>`;
+
+  ops.forEach((op, oi) => {
+    const om = meas.filter(m => m.opId === op.id);
+    if (om.length === 0) return;
+    const times = om.map(m=>m.time);
+    const avg = times.reduce((a,b)=>a+b,0)/times.length;
+    const sd = Math.sqrt(times.map(t=>(t-avg)**2).reduce((a,b)=>a+b,0)/times.length);
+
+    html += `<div class="meas-section">
+      <div class="meas-section-head">
+        <div class="op-num" style="background:${op.color};width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:800;color:white">${oi+1}</div>
+        <div class="meas-op-name">${op.name||'Operation '+(oi+1)}</div>
+        <span style="font-size:0.75rem;background:var(--bg3);border:1px solid var(--border2);padding:0.15rem 0.5rem;border-radius:4px;color:var(--text-muted)">${op.type}</span>
+        <div class="meas-avg">⌀ ${fmtS(avg)}</div>
+        <span style="font-size:0.75rem;color:var(--text-dim)">${om.length} mät.</span>
+      </div>
+      <div class="meas-table-wrap">
+        <table class="mt">
+          <thead><tr><th>#</th><th>Uppmätt tid</th><th>Kl.</th><th>Normering</th><th>Normtid</th><th class="no-print">Ta bort</th></tr></thead>
+          <tbody>
+            ${om.map((m,mi) => {
+              const outlier = om.length>3 && Math.abs(m.time-avg) > 2*sd;
+              const fast = om.length>3 && m.time < avg*0.8 && !outlier;
+              const cls = outlier?'outlier':fast?'fast':'normal';
+              const nt = m.time*(m.rating/100);
+              return `<tr>
+                <td style="color:var(--text-muted);font-size:0.8rem">${mi+1}</td>
+                <td><span class="time-pill ${cls}">${fmtS(m.time)}${outlier?' ⚠':''}</span></td>
+                <td style="color:var(--text-muted);font-size:0.78rem">${m.ts}</td>
+                <td>
+                  <select class="rating-sel" onchange="setRating(${m.id},this.value)">
+                    ${[60,70,75,80,85,90,95,100,105,110,115,120,125,130].map(r=>`<option value="${r}" ${m.rating==r?'selected':''}>${r}%</option>`).join('')}
+                  </select>
+                </td>
+                <td><span class="time-pill normal">${fmtS(nt)}</span></td>
+                <td class="no-print"><button class="btn btn-danger btn-sm" onclick="removeMeas(${m.id})">✕</button></td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+  });
+  out.innerHTML = html;
+}
+
+// ── ANALYSIS ──
+function renderAnalysis() {
+  const out = document.getElementById('analysisOut');
+  if (meas.length === 0) { out.innerHTML = '<div class="empty"><div class="empty-ico">📊</div><p>Lägg till mätningar för att se analys.</p></div>'; return; }
+
+  let totalNorm = 0;
+  let opCards = '';
+
+  ops.forEach((op, oi) => {
+    const om = meas.filter(m=>m.opId===op.id);
+    if (om.length === 0) return;
+    const times = om.map(m=>m.time);
+    const norms = om.map(m=>m.time*(m.rating/100));
+    const avg = times.reduce((a,b)=>a+b,0)/times.length;
+    const avgN = norms.reduce((a,b)=>a+b,0)/norms.length;
+    const min = Math.min(...times), max = Math.max(...times);
+    const sd = Math.sqrt(times.map(t=>(t-avg)**2).reduce((a,b)=>a+b,0)/times.length);
+    const cv = sd/avg*100;
+    const std = avgN * 1.15;
+    totalNorm += avgN;
+    const req = parseFloat(op.req);
+    const reqOk = op.req ? avg <= req : null;
+
+    opCards += `
+      <div class="card">
+        <div class="card-head">
+          <div style="display:flex;align-items:center;gap:0.7rem">
+            <div style="width:26px;height:26px;border-radius:50%;background:${op.color};color:white;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:800;display:flex;align-items:center;justify-content:center">${oi+1}</div>
+            <span class="card-label" style="font-size:0.9rem;color:var(--text)">${op.name||'Operation '+(oi+1)}</span>
+            <span style="font-size:0.72rem;background:var(--bg3);border:1px solid var(--border2);padding:0.15rem 0.5rem;border-radius:4px;color:var(--text-muted)">${op.type}</span>
+          </div>
+          ${reqOk!==null?`<span class="status-badge ${reqOk?'status-ok':'status-warn'}">${reqOk?'✓ Inom krav':'⚠ Över krav'} (${op.req}s)</span>`:''}
+        </div>
+        <div class="card-body">
+          <div class="sum-grid">
+            <div class="sum-box primary"><div class="sum-lbl">Snittid</div><div class="sum-val blue">${fmtS(avg)}</div><div class="sum-sub">${om.length} mätningar</div></div>
+            <div class="sum-box"><div class="sum-lbl">Normtid</div><div class="sum-val">${fmtS(avgN)}</div><div class="sum-sub">justerad normering</div></div>
+            <div class="sum-box"><div class="sum-lbl">Standardtid</div><div class="sum-val">${fmtS(std)}</div><div class="sum-sub">+15% tillåtelse</div></div>
+            <div class="sum-box"><div class="sum-lbl">Min</div><div class="sum-val green">${fmtS(min)}</div><div class="sum-sub">snabbast</div></div>
+            <div class="sum-box"><div class="sum-lbl">Max</div><div class="sum-val red">${fmtS(max)}</div><div class="sum-sub">långsammast</div></div>
+            <div class="sum-box"><div class="sum-lbl">Variation (CV)</div><div class="sum-val ${cv>20?'red':cv>10?'yellow':'green'}">${cv.toFixed(1)}%</div><div class="sum-sub">${cv>20?'Hög':cv>10?'Måttlig':'Stabil'}</div></div>
+          </div>
+          ${op.req?`<div style="margin-top:0.5rem">
+            <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text-muted);margin-bottom:0.3rem">
+              <span>Effektivitet mot krav (${op.req}s)</span><span>${(req/avg*100).toFixed(0)}%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width:${Math.min(100,req/avg*100)}%;background:${avg<=req?'var(--green)':'var(--red)'}"></div>
+            </div>
+          </div>`:''}
+        </div>
+      </div>`;
+  });
+
+  const tot15 = totalNorm * 1.15;
+  const pph = totalNorm > 0 ? Math.floor(3600/totalNorm) : 0;
+  const pphS = tot15 > 0 ? Math.floor(3600/tot15) : 0;
+
+  const summary = `
+    <div class="card" style="border-color:var(--accent-border)">
+      <div class="card-head" style="background:var(--accent-dim)">
+        <span class="card-label" style="color:var(--accent)">📊 Total cykelsummering</span>
+      </div>
+      <div class="card-body">
+        <div class="sum-grid">
+          <div class="sum-box primary"><div class="sum-lbl">Total cykeltid</div><div class="sum-val blue">${fmtS(totalNorm)}</div><div class="sum-sub">normtid</div></div>
+          <div class="sum-box"><div class="sum-lbl">Standardcykeltid</div><div class="sum-val">${fmtS(tot15)}</div><div class="sum-sub">+15% tillåtelse</div></div>
+          <div class="sum-box"><div class="sum-lbl">Kapacitet/timme</div><div class="sum-val green">${pph}</div><div class="sum-sub">normtid</div></div>
+          <div class="sum-box"><div class="sum-lbl">Kapacitet/timme</div><div class="sum-val">${pphS}</div><div class="sum-sub">standardtid</div></div>
+          <div class="sum-box"><div class="sum-lbl">Per 8h skift</div><div class="sum-val">${pphS*8}</div><div class="sum-sub">standardtid</div></div>
+          <div class="sum-box"><div class="sum-lbl">Per 3-skift/dygn</div><div class="sum-val">${pphS*24}</div><div class="sum-sub">standardtid</div></div>
+        </div>
+      </div>
+    </div>`;
+
+  out.innerHTML = summary + '<div style="margin-top:1.5rem">' + opCards + '</div>';
+}
+
+// ── TABS ──
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+  if (name==='analysis') renderAnalysis();
+}
+
+// ── EXPORT ──
+function exportPDF() {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-analysis').classList.add('active');
+  renderAnalysis();
+  setTimeout(() => { window.print(); document.getElementById('tab-meas').classList.add('active'); document.getElementById('tab-analysis').classList.remove('active'); }, 300);
+}
+
+// ── RESET ──
+function resetAll() {
+  if (!confirm('Rensa alla mätningar och operationer?')) return;
+  meas = []; ops = [];
+  addOp('Förberedelse','Transport','');
+  addOp('Montering','Manuell','');
+  addOp('Kontroll','Kontroll','');
+  addOp('Nedläggning','Transport','');
+  renderMeas(); renderAnalysis();
+  showToast('✓ Studien rensad');
+}
+
+// ── UTILS ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.code==='Space' && !['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) {
+    e.preventDefault();
+    if (!timerRunning) startTimer(); else lapTimer();
+  }
+});
+</script>
+</body>
+</html>
