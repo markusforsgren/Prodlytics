@@ -6,8 +6,6 @@
     <title>Prodlytics - Produktionseffektivitet genom data</title>
     <meta name="description" content="Vi hjälper tillverkande företag optimera sin produktion med OEE-analys, prediktivt underhåll och datadriven produktionsutveckling.">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -15,8 +13,6 @@
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
     </script>
-    <!-- End Google Analytics -->
-    
     <style>
         :root {
             --primary: #1C1C1E;
@@ -32,621 +28,101 @@
             --border: #D1D1D6;
             --green: #34C759;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Work Sans', sans-serif;
-            background: var(--bg-light);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Navigation */
-        nav {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        nav .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-svg {
-            height: 160px;
-        }
-        
-        /* Carousel button hover effects */
-        #prevBtn:hover, #nextBtn:hover {
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 6px 20px rgba(212, 162, 78, 0.4);
-        }
-        
-        #prevBtn:active, #nextBtn:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            margin-top: 80px;
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            padding: 6rem 2rem 4rem;
-            background: var(--primary);
-            position: relative;
-        }
-        
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .hero-label {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-        
-        .hero-section h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            max-width: 1000px;
-            color: var(--text-white);
-            letter-spacing: -0.02em;
-        }
-        
-        .hero-section p {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.75);
-            max-width: 700px;
-            margin-bottom: 3rem;
-            font-weight: 400;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 1.2rem 2.5rem;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            border: 2px solid var(--accent);
-            letter-spacing: 0.02em;
-        }
-        
-        .cta-button:hover {
-            background: transparent;
-            color: var(--accent);
-        }
-        
-        /* Stats Section */
-        .stats-section {
-            background: var(--bg-light);
-            padding: 5rem 2rem;
-        }
-        
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-        
-        .stat-card {
-            background: var(--bg);
-            padding: 3rem 2rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-size: 4.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            line-height: 1;
-            letter-spacing: -0.02em;
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-light);
-            line-height: 1.4;
-        }
-        
-        /* Services Section */
-        .services-section {
-            padding: 7rem 2rem;
-            background: var(--bg);
-        }
-        
-        .services-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-header {
-            margin-bottom: 5rem;
-        }
-        
-        .section-tag {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            display: block;
-        }
-        
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-        
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            max-width: 700px;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            padding: 3rem;
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover {
-            border-color: var(--accent);
-        }
-        
-        .service-number {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-        
-        .service-card p {
-            color: var(--text-light);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card ul {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-        
-        .service-card li {
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            position: relative;
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        .service-card li:before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 700;
-        }
-        
-        .service-result {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            font-weight: 700;
-            color: var(--text);
-        }
-        
-        /* Case Study */
-        .case-study {
-            background: var(--primary);
-            padding: 5rem 2rem;
-            margin: 5rem 0 0 0;
-        }
-        
-        .case-study-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .case-study-label {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-        
-        .case-study-text {
-            font-size: 1.5rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.85);
-            font-weight: 400;
-            margin-bottom: 3rem;
-        }
-        
-        .case-study-result {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-        }
-        
-        .case-study-details {
-            color: rgba(255, 255, 255, 0.65);
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-        
-        .case-study-details strong {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        /* Calculator Section */
-        .calculator-section {
-            padding: 7rem 2rem;
-            background: var(--bg-light);
-        }
-        
-        .calculator-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            padding: 3rem;
-        }
-        
-        .calculator-header {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 2rem;
-            margin-bottom: 2.5rem;
-        }
-        
-        .calculator-header h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-        
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 2rem;
-        }
-        
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-            color: var(--text);
-        }
-        
-        .hint {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-top: 0.4rem;
-            font-weight: 400;
-        }
-        
-        input[type="number"],
-        input[type="text"],
-        input[type="email"],
-        select {
-            width: 100%;
-            padding: 1rem;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            font-size: 1rem;
-            font-family: 'Work Sans', sans-serif;
-            transition: all 0.3s ease;
-            color: var(--text);
-        }
-        
-        input:focus,
-        select:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-        
-        .btn-calculate {
-            width: 100%;
-            padding: 1.3rem;
-            background: var(--accent);
-            color: var(--primary);
-            border: 2px solid var(--accent);
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: 'Work Sans', sans-serif;
-            letter-spacing: 0.02em;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-        
-        .btn-calculate:hover {
-            background: transparent;
-            color: var(--accent);
-        }
-        
-        .results-section {
-            display: none;
-            margin-top: 3rem;
-        }
-        
-        .results-section.show {
-            display: block;
-        }
-        
-        .results-box {
-            background: var(--primary);
-            color: var(--text-white);
-            padding: 3rem;
-            border: 1px solid var(--primary);
-        }
-        
-        .results-box h3 {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-        
-        .savings-number {
-            font-size: 4rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin: 1.5rem 0;
-            letter-spacing: -0.02em;
-        }
-        
-        .results-detail {
-            color: rgba(255, 255, 255, 0.75);
-            margin: 1rem 0;
-        }
-        
-        /* About Section */
-        .about-section {
-            padding: 7rem 2rem;
-            background: var(--bg);
-        }
-        
-        .about-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .about-section h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-        }
-        
-        .about-section h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 3rem 0 1.5rem 0;
-            letter-spacing: -0.01em;
-        }
-        
-        .about-section p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-        
-        .about-highlight {
-            background: var(--bg-light);
-            padding: 2.5rem;
-            margin: 2rem 0;
-            border-left: 3px solid var(--accent);
-        }
-        
-        .workflow-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .workflow-item {
-            border: 1px solid var(--border);
-            padding: 2rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .workflow-item:hover {
-            border-color: var(--accent);
-        }
-        
-        .workflow-number {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .workflow-item h4 {
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-        }
-        
-        .workflow-item p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            padding: 7rem 2rem;
-            background: var(--primary);
-        }
-        
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .contact-section h2 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: var(--text-white);
-            letter-spacing: -0.02em;
-        }
-        
-        .contact-section p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.75);
-            margin-bottom: 3rem;
-        }
-        
-        .contact-box {
-            background: var(--secondary);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 3rem;
-        }
-        
-        .contact-box a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .contact-box a:hover {
-            color: var(--text-white);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: rgba(255, 255, 255, 0.5);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        footer p {
-            font-size: 0.9rem;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Work Sans', sans-serif; background: var(--bg-light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        nav { background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav .container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo-svg { height: 160px; }
+        #prevBtn:hover, #nextBtn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 20px rgba(212,162,78,0.4); }
+        #prevBtn:active, #nextBtn:active { transform: translateY(-50%) scale(0.95); }
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a.nav-tool { color: var(--accent); border: 1px solid var(--accent); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; }
+        .nav-links a.nav-tool:hover { background: var(--accent); color: var(--primary); }
+        .hero-section { margin-top: 80px; min-height: 85vh; display: flex; align-items: center; padding: 6rem 2rem 4rem; background: var(--primary); position: relative; }
+        .hero-container { max-width: 1400px; margin: 0 auto; }
+        .hero-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 2rem; font-weight: 600; }
+        .hero-section h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 2rem; max-width: 1000px; color: var(--text-white); letter-spacing: -0.02em; }
+        .hero-section p { font-size: 1.25rem; color: rgba(255,255,255,0.75); max-width: 700px; margin-bottom: 3rem; font-weight: 400; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--primary); padding: 1.2rem 2.5rem; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s ease; border: 2px solid var(--accent); letter-spacing: 0.02em; }
+        .cta-button:hover { background: transparent; color: var(--accent); }
+        .stats-section { background: var(--bg-light); padding: 5rem 2rem; }
+        .stats-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
+        .stat-card { background: var(--bg); padding: 3rem 2rem; border: 1px solid var(--border); transition: all 0.3s ease; }
+        .stat-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .stat-number { font-size: 4.5rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; line-height: 1; letter-spacing: -0.02em; }
+        .stat-label { font-size: 1rem; font-weight: 600; color: var(--text-light); line-height: 1.4; }
+        .services-section { padding: 7rem 2rem; background: var(--bg); }
+        .services-container { max-width: 1400px; margin: 0 auto; }
+        .section-header { margin-bottom: 5rem; }
+        .section-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1.5rem; font-weight: 600; display: block; }
+        .section-header h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+        .section-header p { font-size: 1.2rem; color: var(--text-light); max-width: 700px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+        .service-card { background: var(--bg); border: 1px solid var(--border); padding: 3rem; transition: all 0.3s ease; }
+        .service-card:hover { border-color: var(--accent); }
+        .service-number { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+        .service-card h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+        .service-card p { color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem; }
+        .service-card ul { list-style: none; margin-top: 1.5rem; }
+        .service-card li { padding-left: 1.5rem; margin-bottom: 0.8rem; position: relative; color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+        .service-card li:before { content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+        .service-result { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-weight: 700; color: var(--text); }
+        .case-study { background: var(--primary); padding: 5rem 2rem; margin: 5rem 0 0 0; }
+        .case-study-container { max-width: 1000px; margin: 0 auto; }
+        .case-study-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 2rem; font-weight: 600; }
+        .case-study-text { font-size: 1.5rem; line-height: 1.6; color: rgba(255,255,255,0.85); font-weight: 400; margin-bottom: 3rem; }
+        .case-study-result { font-size: 3.5rem; font-weight: 800; color: var(--accent); margin-bottom: 2rem; letter-spacing: -0.02em; }
+        .case-study-details { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; }
+        .case-study-details strong { color: rgba(255,255,255,0.9); }
+        .calculator-section { padding: 7rem 2rem; background: var(--bg-light); }
+        .calculator-container { max-width: 900px; margin: 0 auto; background: var(--bg); border: 1px solid var(--border); padding: 3rem; }
+        .calculator-header { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2.5rem; }
+        .calculator-header h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .form-group { margin-bottom: 2rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.8rem; font-size: 0.95rem; color: var(--text); }
+        .hint { font-size: 0.85rem; color: var(--text-light); margin-top: 0.4rem; font-weight: 400; }
+        input[type="number"], input[type="text"], input[type="email"], select { width: 100%; padding: 1rem; background: var(--bg); border: 1px solid var(--border); font-size: 1rem; font-family: 'Work Sans', sans-serif; transition: all 0.3s ease; color: var(--text); }
+        input:focus, select:focus { outline: none; border-color: var(--accent); }
+        .btn-calculate { width: 100%; padding: 1.3rem; background: var(--accent); color: var(--primary); border: 2px solid var(--accent); font-size: 1rem; font-weight: 700; cursor: pointer; font-family: 'Work Sans', sans-serif; letter-spacing: 0.02em; transition: all 0.3s ease; margin-top: 1rem; }
+        .btn-calculate:hover { background: transparent; color: var(--accent); }
+        .results-section { display: none; margin-top: 3rem; }
+        .results-section.show { display: block; }
+        .results-box { background: var(--primary); color: var(--text-white); padding: 3rem; border: 1px solid var(--primary); }
+        .results-box h3 { font-size: 1.3rem; margin-bottom: 2rem; font-weight: 700; }
+        .savings-number { font-size: 4rem; font-weight: 800; color: var(--accent); margin: 1.5rem 0; letter-spacing: -0.02em; }
+        .results-detail { color: rgba(255,255,255,0.75); margin: 1rem 0; }
+        .about-section { padding: 7rem 2rem; background: var(--bg); }
+        .about-container { max-width: 1000px; margin: 0 auto; }
+        .about-section h2 { font-size: 3rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: -0.02em; }
+        .about-section h3 { font-size: 1.8rem; font-weight: 700; margin: 3rem 0 1.5rem 0; letter-spacing: -0.01em; }
+        .about-section p { font-size: 1.1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.5rem; }
+        .about-highlight { background: var(--bg-light); padding: 2.5rem; margin: 2rem 0; border-left: 3px solid var(--accent); }
+        .workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .workflow-item { border: 1px solid var(--border); padding: 2rem; transition: border-color 0.3s ease; }
+        .workflow-item:hover { border-color: var(--accent); }
+        .workflow-number { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+        .workflow-item h4 { font-weight: 700; margin-bottom: 0.8rem; font-size: 1.1rem; }
+        .workflow-item p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; }
+        .contact-section { padding: 7rem 2rem; background: var(--primary); }
+        .contact-container { max-width: 800px; margin: 0 auto; }
+        .contact-section h2 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-white); letter-spacing: -0.02em; }
+        .contact-section p { font-size: 1.2rem; color: rgba(255,255,255,0.75); margin-bottom: 3rem; }
+        .contact-box { background: var(--secondary); border: 1px solid rgba(255,255,255,0.1); padding: 3rem; }
+        .contact-box a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 1.5rem; transition: color 0.3s ease; }
+        .contact-box a:hover { color: var(--text-white); }
+        footer { background: var(--primary); color: rgba(255,255,255,0.5); padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+        footer p { font-size: 0.9rem; }
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero-section {
-                padding: 4rem 1.5rem 3rem;
-            }
-            
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-            
-            .stats-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .calculator-container {
-                padding: 2rem 1.5rem;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
+            .nav-links { display: none; }
+            .hero-section { padding: 4rem 1.5rem 3rem; }
+            .hero-section h1 { font-size: 2.5rem; }
+            .stats-container { grid-template-columns: 1fr; gap: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .calculator-container { padding: 2rem 1.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -655,10 +131,7 @@
         <div class="container">
             <svg class="logo-svg" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg">
                 <g>
-                    <path d="M 25 10 L 27.5 10 L 28.5 7.5 L 31.5 7.5 L 32.5 10 L 35 10 L 35 12.5 L 37.5 13.5 L 37.5 16.5 L 35 17.5 L 35 20 L 32.5 20 L 31.5 22.5 L 28.5 22.5 L 27.5 20 L 25 20 L 25 17.5 L 22.5 16.5 L 22.5 13.5 L 25 12.5 Z" 
-                          fill="none" 
-                          stroke="#D4A24E" 
-                          stroke-width="1.5"/>
+                    <path d="M 25 10 L 27.5 10 L 28.5 7.5 L 31.5 7.5 L 32.5 10 L 35 10 L 35 12.5 L 37.5 13.5 L 37.5 16.5 L 35 17.5 L 35 20 L 32.5 20 L 31.5 22.5 L 28.5 22.5 L 27.5 20 L 25 20 L 25 17.5 L 22.5 16.5 L 22.5 13.5 L 25 12.5 Z" fill="none" stroke="#D4A24E" stroke-width="1.5"/>
                     <circle cx="30" cy="15" r="3" fill="none" stroke="#D4A24E" stroke-width="1.5"/>
                     <circle cx="30" cy="15" r="1" fill="#D4A24E"/>
                     <circle cx="25" cy="11" r="0.8" fill="#D4A24E"/>
@@ -679,10 +152,11 @@
                 <li><a href="#konsult">Konsult</a></li>
                 <li><a href="#om">Om oss</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="/tidsstudie.html" class="nav-tool">🔧 Verktyg</a></li>
             </ul>
         </div>
     </nav>
-    
+
     <section class="hero-section">
         <div class="hero-container">
             <div class="hero-label">PRODUKTIONSUTVECKLING</div>
@@ -691,24 +165,15 @@
             <a href="#kalkylator" class="cta-button">BERÄKNA BESPARINGSPOTENTIAL</a>
         </div>
     </section>
-    
+
     <section class="stats-section">
         <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-number">67%</div>
-                <div class="stat-label">Minskning av oplanerade stopp</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">15+</div>
-                <div class="stat-label">Års erfarenhet inom industri</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3.2M</div>
-                <div class="stat-label">Genomsnittlig besparing per år</div>
-            </div>
+            <div class="stat-card"><div class="stat-number">67%</div><div class="stat-label">Minskning av oplanerade stopp</div></div>
+            <div class="stat-card"><div class="stat-number">15+</div><div class="stat-label">Års erfarenhet inom industri</div></div>
+            <div class="stat-card"><div class="stat-number">3.2M</div><div class="stat-label">Genomsnittlig besparing per år</div></div>
         </div>
     </section>
-    
+
     <section class="services-section" id="tjanster">
         <div class="services-container">
             <div class="section-header">
@@ -716,109 +181,26 @@
                 <h2>Så hjälper vi er produktion</h2>
                 <p>Specialiserade lösningar för tillverkande företag med fokus på mätbara resultat och hållbar effektivisering.</p>
             </div>
-            
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-number">01</div>
-                    <h3>Prediktivt Underhåll</h3>
-                    <p>Övergång från reaktivt "fixa när det går sönder" till datadriven underhållsstrategi som förutser problem innan de uppstår.</p>
-                    <ul>
-                        <li>Kartläggning av kritiska maskiner och komponenter</li>
-                        <li>Implementering av tillståndsövervakning</li>
-                        <li>Analys av historiska fel och identifiering av mönster</li>
-                        <li>Uppbyggnad av underhållsplan baserad på verkligt behov</li>
-                        <li>Utbildning av personal i förebyggande metodik</li>
-                    </ul>
-                    <div class="service-result">Resultat: 50-70% färre oplanerade stopp</div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-number">02</div>
-                    <h3>OEE-optimering</h3>
-                    <p>Systematisk förbättring av Overall Equipment Effectiveness genom analys och åtgärder inom Tillgänglighet, Prestanda och Kvalitet.</p>
-                    <ul>
-                        <li>Nulägesanalys av er faktiska OEE</li>
-                        <li>Identifiering av de 6 stora förlusterna</li>
-                        <li>Prioriterad handlingsplan baserad på störst ekonomisk effekt</li>
-                        <li>Implementering av åtgärder steg för steg</li>
-                        <li>Uppföljningssystem för kontinuerlig förbättring</li>
-                    </ul>
-                    <div class="service-result">Mål: 75-85% OEE inom 12 månader</div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-number">03</div>
-                    <h3>Prioriteringslistor & Flaskhalsanalys</h3>
-                    <p>Datadrivna prioriteringar som fokuserar era resurser där de ger störst effekt. En välgjord prioriteringslista kan ensam ge 10-20% effektivisering.</p>
-                    <ul>
-                        <li>Kartläggning av hela produktionsflödet</li>
-                        <li>Identifiering av flaskhalsar och förlustkällor</li>
-                        <li>Ekonomisk analys av varje förbättringsområde</li>
-                        <li>Skapande av prioriterad åtgärdslista</li>
-                        <li>Implementeringsstöd för top 3 åtgärder</li>
-                    </ul>
-                    <div class="service-result">Typisk effekt: 10-20% produktionsökning</div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-number">04</div>
-                    <h3>Lean & TPM-implementering</h3>
-                    <p>Praktisk implementering av Lean-principer och Total Productive Maintenance anpassat för er verksamhet.</p>
-                    <ul>
-                        <li>5S-implementering på produktion och underhåll</li>
-                        <li>Autonomt underhåll</li>
-                        <li>SMED - ställtidsreducering</li>
-                        <li>Standardiserat arbete för kritiska processer</li>
-                        <li>Visualisering och styrning</li>
-                    </ul>
-                    <div class="service-result">Resultat: Mer stabil produktion</div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-number">05</div>
-                    <h3>Produktionsutveckling</h3>
-                    <p>Helhetsanalys och optimering av era produktionsflöden med fokus på genomloppstid och kapitalbindning.</p>
-                    <ul>
-                        <li>Value Stream Mapping</li>
-                        <li>Identifiering av slöserier</li>
-                        <li>Balansering av produktionslinjer</li>
-                        <li>Layout-optimering</li>
-                        <li>Implementering av dragande produktion</li>
-                    </ul>
-                    <div class="service-result">Resultat: 20-40% kortare genomloppstid</div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-number">06</div>
-                    <h3>Industri 4.0 & Digitalisering</h3>
-                    <p>Vägledning i er digitala resa - från sensorer och IoT till AI-baserad produktionsoptimering.</p>
-                    <ul>
-                        <li>Mogenhetsanalys - var står ni idag?</li>
-                        <li>Roadmap för digitalisering</li>
-                        <li>Rådgivning kring system och leverantörer</li>
-                        <li>Integration mellan maskiner och affärssystem</li>
-                        <li>Dataanalys för prediktiv styrning</li>
-                    </ul>
-                    <div class="service-result">Focus: ROI från dag 1</div>
-                </div>
+                <div class="service-card"><div class="service-number">01</div><h3>Prediktivt Underhåll</h3><p>Övergång från reaktivt "fixa när det går sönder" till datadriven underhållsstrategi som förutser problem innan de uppstår.</p><ul><li>Kartläggning av kritiska maskiner och komponenter</li><li>Implementering av tillståndsövervakning</li><li>Analys av historiska fel och identifiering av mönster</li><li>Uppbyggnad av underhållsplan baserad på verkligt behov</li><li>Utbildning av personal i förebyggande metodik</li></ul><div class="service-result">Resultat: 50-70% färre oplanerade stopp</div></div>
+                <div class="service-card"><div class="service-number">02</div><h3>OEE-optimering</h3><p>Systematisk förbättring av Overall Equipment Effectiveness genom analys och åtgärder inom Tillgänglighet, Prestanda och Kvalitet.</p><ul><li>Nulägesanalys av er faktiska OEE</li><li>Identifiering av de 6 stora förlusterna</li><li>Prioriterad handlingsplan baserad på störst ekonomisk effekt</li><li>Implementering av åtgärder steg för steg</li><li>Uppföljningssystem för kontinuerlig förbättring</li></ul><div class="service-result">Mål: 75-85% OEE inom 12 månader</div></div>
+                <div class="service-card"><div class="service-number">03</div><h3>Prioriteringslistor & Flaskhalsanalys</h3><p>Datadrivna prioriteringar som fokuserar era resurser där de ger störst effekt.</p><ul><li>Kartläggning av hela produktionsflödet</li><li>Identifiering av flaskhalsar och förlustkällor</li><li>Ekonomisk analys av varje förbättringsområde</li><li>Skapande av prioriterad åtgärdslista</li><li>Implementeringsstöd för top 3 åtgärder</li></ul><div class="service-result">Typisk effekt: 10-20% produktionsökning</div></div>
+                <div class="service-card"><div class="service-number">04</div><h3>Lean & TPM-implementering</h3><p>Praktisk implementering av Lean-principer och Total Productive Maintenance anpassat för er verksamhet.</p><ul><li>5S-implementering på produktion och underhåll</li><li>Autonomt underhåll</li><li>SMED - ställtidsreducering</li><li>Standardiserat arbete för kritiska processer</li><li>Visualisering och styrning</li></ul><div class="service-result">Resultat: Mer stabil produktion</div></div>
+                <div class="service-card"><div class="service-number">05</div><h3>Produktionsutveckling</h3><p>Helhetsanalys och optimering av era produktionsflöden med fokus på genomloppstid och kapitalbindning.</p><ul><li>Value Stream Mapping</li><li>Identifiering av slöserier</li><li>Balansering av produktionslinjer</li><li>Layout-optimering</li><li>Implementering av dragande produktion</li></ul><div class="service-result">Resultat: 20-40% kortare genomloppstid</div></div>
+                <div class="service-card"><div class="service-number">06</div><h3>Industri 4.0 & Digitalisering</h3><p>Vägledning i er digitala resa - från sensorer och IoT till AI-baserad produktionsoptimering.</p><ul><li>Mogenhetsanalys - var står ni idag?</li><li>Roadmap för digitalisering</li><li>Rådgivning kring system och leverantörer</li><li>Integration mellan maskiner och affärssystem</li><li>Dataanalys för prediktiv styrning</li></ul><div class="service-result">Focus: ROI från dag 1</div></div>
             </div>
         </div>
     </section>
-    
+
     <section class="case-study">
         <div class="case-study-container">
             <div class="case-study-label">CASE STUDY</div>
-            <p class="case-study-text">
-                Ett företag med 15 maskiner hade stora problem med effektiviteten. Genom att skapa en prioriteringslista baserad på verklig data kunde vi identifiera de tre största förlustkällorna.
-            </p>
+            <p class="case-study-text">Ett företag med 15 maskiner hade stora problem med effektiviteten. Genom att skapa en prioriteringslista baserad på verklig data kunde vi identifiera de tre största förlustkällorna.</p>
             <div class="case-study-result">15% högre effektivisering</div>
-            <p class="case-study-details">
-                <strong>Metod:</strong> Endast en välgjord prioriteringslista - ingen stor investering, inga nya system. 
-                Bara fokus på rätt saker i rätt ordning. Detta visar kraften i att arbeta systematiskt och datadrivet.
-            </p>
+            <p class="case-study-details"><strong>Metod:</strong> Endast en välgjord prioriteringslista - ingen stor investering, inga nya system. Bara fokus på rätt saker i rätt ordning.</p>
         </div>
     </section>
-    
+
     <section class="calculator-section" id="kalkylator">
         <div class="services-container">
             <div class="section-header">
@@ -827,592 +209,188 @@
                 <p>Få en professionell analys av ert produktionsvärde, OEE och besparingspotential på 2 minuter.</p>
             </div>
         </div>
-        
         <div class="calculator-container">
-            <!-- Mini production value calculator -->
-            <div style="background: var(--bg-light); border: 2px dashed var(--border); padding: 2rem; margin-bottom: 3rem;">
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text);">
-                    Vet du inte ert produktionsvärde per timme?
-                </h3>
-                <p style="color: var(--text-light); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    Räkna ut det här först, så fylls värdet automatiskt i kalkylatorn nedan ↓
-                </p>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1rem;">
-                    <div class="form-group">
-                        <label style="font-size: 0.9rem;">
-                            Produkter per timme
-                            <span class="hint">Genomsnittlig produktion</span>
-                        </label>
-                        <input type="number" id="productsPerHour" min="0" placeholder="50">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label style="font-size: 0.9rem;">
-                            Pris per produkt (kr)
-                            <span class="hint">Försäljningspris eller värde</span>
-                        </label>
-                        <input type="number" id="pricePerProduct" min="0" placeholder="500">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label style="font-size: 0.9rem;">
-                            = Produktionsvärde/timme
-                            <span class="hint">Beräknas automatiskt</span>
-                        </label>
-                        <div style="padding: 1rem; background: var(--primary); color: var(--accent); font-size: 1.3rem; font-weight: 700; border: 1px solid var(--primary);" id="calculatedValue">
-                            0 kr
-                        </div>
-                    </div>
+            <div style="background:var(--bg-light);border:2px dashed var(--border);padding:2rem;margin-bottom:3rem;">
+                <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:0.5rem;">Vet du inte ert produktionsvärde per timme?</h3>
+                <p style="color:var(--text-light);margin-bottom:1.5rem;font-size:0.95rem;">Räkna ut det här först, så fylls värdet automatiskt i kalkylatorn nedan ↓</p>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-bottom:1rem;">
+                    <div class="form-group"><label style="font-size:0.9rem;">Produkter per timme<span class="hint">Genomsnittlig produktion</span></label><input type="number" id="productsPerHour" min="0" placeholder="50"></div>
+                    <div class="form-group"><label style="font-size:0.9rem;">Pris per produkt (kr)<span class="hint">Försäljningspris eller värde</span></label><input type="number" id="pricePerProduct" min="0" placeholder="500"></div>
+                    <div class="form-group"><label style="font-size:0.9rem;">= Produktionsvärde/timme<span class="hint">Beräknas automatiskt</span></label><div style="padding:1rem;background:var(--primary);color:var(--accent);font-size:1.3rem;font-weight:700;border:1px solid var(--primary);" id="calculatedValue">0 kr</div></div>
                 </div>
-                
-                <p style="font-size: 0.85rem; color: var(--text-light); font-style: italic;">
-                    💡 Tips: Räkna med försäljningspriset eller det bidrag varje produkt ger. Om ni tillverkar flera produkter, använd ett medelvärde.
-                </p>
             </div>
-            
-            <div class="calculator-header">
-                <h2>OEE-kalkylator</h2>
-            </div>
-            
+            <div class="calculator-header"><h2>OEE-kalkylator</h2></div>
             <form id="oeeCalculator">
                 <div class="form-grid">
-                    <div class="form-group">
-                        <label>
-                            Nuvarande OEE (%)
-                            <span class="hint">Overall Equipment Effectiveness</span>
-                        </label>
-                        <input type="number" id="currentOEE" required min="0" max="100" placeholder="65.0">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>
-                            Oplanerade stopp (%)
-                            <span class="hint">Andel av total produktionstid</span>
-                        </label>
-                        <input type="number" id="unplannedDowntime" required min="0" max="100" placeholder="12.0">
-                    </div>
+                    <div class="form-group"><label>Nuvarande OEE (%)<span class="hint">Overall Equipment Effectiveness</span></label><input type="number" id="currentOEE" required min="0" max="100" placeholder="65.0"></div>
+                    <div class="form-group"><label>Oplanerade stopp (%)<span class="hint">Andel av total produktionstid</span></label><input type="number" id="unplannedDowntime" required min="0" max="100" placeholder="12.0"></div>
                 </div>
-                
                 <div class="form-grid">
-                    <div class="form-group">
-                        <label>
-                            Produktionsvärde/timme (kr)
-                            <span class="hint">Genomsnittligt värde per timme</span>
-                        </label>
-                        <input type="number" id="productionValuePerHour" required min="0" placeholder="25000">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Produktionstimmar/månad</label>
-                        <input type="number" id="productionHoursPerMonth" required min="0" placeholder="600">
-                    </div>
+                    <div class="form-group"><label>Produktionsvärde/timme (kr)<span class="hint">Genomsnittligt värde per timme</span></label><input type="number" id="productionValuePerHour" required min="0" placeholder="25000"></div>
+                    <div class="form-group"><label>Produktionstimmar/månad</label><input type="number" id="productionHoursPerMonth" required min="0" placeholder="600"></div>
                 </div>
-                
-                <div class="form-group">
-                    <label>Underhållsstrategi</label>
-                    <select id="maintenanceStrategy" required>
-                        <option value="reactive">Reaktivt - Åtgärdar när problem uppstår</option>
-                        <option value="preventive">Preventivt - Schemalagda underhåll</option>
-                        <option value="mixed">Blandat - Kombination</option>
-                        <option value="predictive">Prediktivt - Datadriven strategi</option>
-                    </select>
-                </div>
-                
+                <div class="form-group"><label>Underhållsstrategi</label><select id="maintenanceStrategy" required><option value="reactive">Reaktivt - Åtgärdar när problem uppstår</option><option value="preventive">Preventivt - Schemalagda underhåll</option><option value="mixed">Blandat - Kombination</option><option value="predictive">Prediktivt - Datadriven strategi</option></select></div>
                 <div class="form-grid">
-                    <div class="form-group">
-                        <label>
-                            Kostnad per stopp (kr)
-                            <span class="hint">Inkl. reparation</span>
-                        </label>
-                        <input type="number" id="avgStopCost" required min="0" placeholder="50000">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Antal stopp/månad</label>
-                        <input type="number" id="stopsPerMonth" required min="0" placeholder="8">
-                    </div>
+                    <div class="form-group"><label>Kostnad per stopp (kr)<span class="hint">Inkl. reparation</span></label><input type="number" id="avgStopCost" required min="0" placeholder="50000"></div>
+                    <div class="form-group"><label>Antal stopp/månad</label><input type="number" id="stopsPerMonth" required min="0" placeholder="8"></div>
                 </div>
-                
                 <button type="submit" class="btn-calculate">BERÄKNA RESULTAT</button>
             </form>
-            
             <div class="results-section" id="resultsSection">
                 <div class="results-box">
                     <h3>Besparingspotential med prediktivt underhåll</h3>
                     <div class="savings-number" id="savingsPotential">0 kr/år</div>
                     <p class="results-detail">Total årlig förlust: <strong id="totalAnnualLoss">0 kr</strong></p>
-                    <p class="results-detail" style="margin-top: 1.5rem; font-size: 1.05rem; color: rgba(255, 255, 255, 0.9);">
-                        Med typisk implementeringskostnad på 40-50k kr får ni snabb återbetalningstid.
-                    </p>
+                    <p class="results-detail" style="margin-top:1.5rem;font-size:1.05rem;color:rgba(255,255,255,0.9);">Med typisk implementeringskostnad på 40-50k kr får ni snabb återbetalningstid.</p>
                 </div>
-                
-                <div style="background: var(--bg); border: 1px solid var(--border); padding: 2.5rem; margin-top: 2rem;">
-                    <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.5rem; font-weight: 700;">Få en detaljerad handlingsplan</h3>
+                <div style="background:var(--bg);border:1px solid var(--border);padding:2.5rem;margin-top:2rem;">
+                    <h3 style="text-align:center;margin-bottom:2rem;font-size:1.5rem;font-weight:700;">Få en detaljerad handlingsplan</h3>
                     <form id="leadForm">
-                        <div class="form-group">
-                            <input type="text" id="name" required placeholder="Ditt namn">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" required placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="company" required placeholder="Företag">
-                        </div>
+                        <div class="form-group"><input type="text" id="name" required placeholder="Ditt namn"></div>
+                        <div class="form-group"><input type="email" id="email" required placeholder="Email"></div>
+                        <div class="form-group"><input type="text" id="company" required placeholder="Företag"></div>
                         <button type="submit" class="btn-calculate">SKICKA RAPPORT</button>
                     </form>
-                    <div id="successMessage" style="display: none; background: var(--green); color: white; padding: 2rem; text-align: center; margin-top: 2rem;">
-                        <p style="font-weight: 600; font-size: 1.1rem;">Tack! Vi kontaktar dig inom 24 timmar.</p>
-                    </div>
+                    <div id="successMessage" style="display:none;background:var(--green);color:white;padding:2rem;text-align:center;margin-top:2rem;"><p style="font-weight:600;font-size:1.1rem;">Tack! Vi kontaktar dig inom 24 timmar.</p></div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Case Study Carousel -->
-    <section style="background: var(--bg-light); padding: 6rem 2rem; position: relative; overflow: hidden;">
-        <div style="max-width: 1200px; margin: 0 auto;">
+
+    <!-- Gratis verktyg sektion -->
+    <section style="background:var(--bg);padding:5rem 2rem;border-top:1px solid var(--border);">
+        <div style="max-width:900px;margin:0 auto;text-align:center;">
+            <span class="section-tag">GRATIS VERKTYG</span>
+            <h2 style="font-size:2.5rem;font-weight:800;margin-bottom:1rem;letter-spacing:-0.02em;">Tidsstudieverktyget</h2>
+            <p style="font-size:1.2rem;color:var(--text-light);max-width:600px;margin:0 auto 2rem;">Mät och analysera era operationstider direkt i webbläsaren. Stoppur, normering, analys och PDF-export – helt gratis.</p>
+            <a href="/tidsstudie.html" style="display:inline-block;background:var(--accent);color:var(--primary);padding:1.2rem 3rem;text-decoration:none;font-weight:700;font-size:1rem;border:2px solid var(--accent);letter-spacing:0.02em;transition:all 0.3s ease;" onmouseover="this.style.background='transparent';this.style.color='var(--accent)'" onmouseout="this.style.background='var(--accent)';this.style.color='var(--primary)'">
+                🔧 ÖPPNA TIDSSTUDIEVERKTYGET
+            </a>
+        </div>
+    </section>
+
+    <section style="background:var(--bg-light);padding:6rem 2rem;position:relative;overflow:hidden;">
+        <div style="max-width:1200px;margin:0 auto;">
             <span class="section-tag">CASE STUDY</span>
-            <h2 style="font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 1rem;">Så här hjälper vi företag</h2>
-            <p style="font-size: 1.2rem; text-align: center; color: var(--text-light); max-width: 700px; margin: 0 auto 4rem;">
-                Ett exempel på hur externa ögon kan hitta förluster ni själva missar
-            </p>
-            
-            <!-- Carousel Container -->
-            <div style="position: relative; max-width: 900px; margin: 0 auto;">
-                <div id="carouselContainer" style="overflow: hidden; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
-                    <div id="carouselTrack" style="display: flex; transition: transform 0.5s ease;">
-                        
-                        <!-- Slide 1 -->
-                        <div class="carousel-slide" style="min-width: 100%; aspect-ratio: 1/1; background: #1a1a1a; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px;">
-                            <div style="font-size: 3.5rem; font-weight: 700; color: #ffffff; text-align: center; line-height: 1.3; margin-bottom: 60px;">
-                                "Vi vet vad som är fel.<br><br>
-                                Vi vet bara inte <span style="color: #d4a24e;">vad vi ska börja med</span>."
-                            </div>
-                            <div style="font-size: 1.8rem; color: #d4a24e; text-align: center; font-style: italic;">
-                                — Produktionschef, 2025
-                            </div>
-                            <div style="position: absolute; bottom: 40px; right: 40px; font-size: 1.2rem; font-weight: 700; color: #d4a24e; font-family: 'IBM Plex Mono', monospace;">
-                                PRODLYTICS
-                            </div>
+            <h2 style="font-size:2.5rem;font-weight:800;text-align:center;margin-bottom:1rem;">Så här hjälper vi företag</h2>
+            <p style="font-size:1.2rem;text-align:center;color:var(--text-light);max-width:700px;margin:0 auto 4rem;">Ett exempel på hur externa ögon kan hitta förluster ni själva missar</p>
+            <div style="position:relative;max-width:900px;margin:0 auto;">
+                <div id="carouselContainer" style="overflow:hidden;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.3);">
+                    <div id="carouselTrack" style="display:flex;transition:transform 0.5s ease;">
+                        <div class="carousel-slide" style="min-width:100%;aspect-ratio:1/1;background:#1a1a1a;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;">
+                            <div style="font-size:3.5rem;font-weight:700;color:#ffffff;text-align:center;line-height:1.3;margin-bottom:60px;">"Vi vet vad som är fel.<br><br>Vi vet bara inte <span style="color:#d4a24e;">vad vi ska börja med</span>."</div>
+                            <div style="font-size:1.8rem;color:#d4a24e;text-align:center;font-style:italic;">— Produktionschef, 2025</div>
+                            <div style="position:absolute;bottom:40px;right:40px;font-size:1.2rem;font-weight:700;color:#d4a24e;font-family:'IBM Plex Mono',monospace;">PRODLYTICS</div>
                         </div>
-                        
-                        <!-- Slide 2 -->
-                        <div class="carousel-slide" style="min-width: 100%; aspect-ratio: 1/1; background: #2a2a2a; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px;">
-                            <div style="font-size: 3rem; font-weight: 800; color: #d4a24e; text-align: center; margin-bottom: 80px;">
-                                VAR KOSTAR DET MEST?
+                        <div class="carousel-slide" style="min-width:100%;aspect-ratio:1/1;background:#2a2a2a;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;">
+                            <div style="font-size:3rem;font-weight:800;color:#d4a24e;text-align:center;margin-bottom:80px;">VAR KOSTAR DET MEST?</div>
+                            <div style="width:100%;max-width:700px;">
+                                <div style="margin-bottom:60px;"><div style="font-size:2rem;color:#ffffff;margin-bottom:15px;font-weight:600;">Maskin 7</div><div style="font-size:1.5rem;color:#999;margin-bottom:20px;font-style:italic;">"Krånglar alltid"</div><div style="width:100%;height:70px;background:rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;"><div style="width:15%;height:100%;background:linear-gradient(90deg,#d4a24e,#f0c674);display:flex;align-items:center;padding:0 20px;font-size:2rem;font-weight:800;color:#1a1a1a;">200k kr/år</div></div></div>
+                                <div><div style="font-size:2rem;color:#ffffff;margin-bottom:15px;font-weight:600;">Maskin 12</div><div style="font-size:1.5rem;color:#999;margin-bottom:20px;font-style:italic;">"Funkar ju bra"</div><div style="width:100%;height:70px;background:rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;position:relative;"><div style="width:100%;height:100%;background:linear-gradient(90deg,#d4a24e,#f0c674);display:flex;align-items:center;padding:0 20px;font-size:2rem;font-weight:800;color:#1a1a1a;">1,2M kr/år</div><span style="position:absolute;right:30px;top:50%;transform:translateY(-50%);font-size:2.5rem;">⚠️</span></div></div>
                             </div>
-                            
-                            <div style="width: 100%; max-width: 700px;">
-                                <div style="margin-bottom: 60px;">
-                                    <div style="font-size: 2rem; color: #ffffff; margin-bottom: 15px; font-weight: 600;">Maskin 7</div>
-                                    <div style="font-size: 1.5rem; color: #999; margin-bottom: 20px; font-style: italic;">"Krånglar alltid"</div>
-                                    <div style="width: 100%; height: 70px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden;">
-                                        <div style="width: 15%; height: 100%; background: linear-gradient(90deg, #d4a24e, #f0c674); display: flex; align-items: center; padding: 0 20px; font-size: 2rem; font-weight: 800; color: #1a1a1a;">200k kr/år</div>
-                                    </div>
-                                </div>
-                                
-                                <div style="margin-bottom: 40px;">
-                                    <div style="font-size: 2rem; color: #ffffff; margin-bottom: 15px; font-weight: 600;">Maskin 12</div>
-                                    <div style="font-size: 1.5rem; color: #999; margin-bottom: 20px; font-style: italic;">"Funkar ju bra"</div>
-                                    <div style="width: 100%; height: 70px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; position: relative;">
-                                        <div style="width: 100%; height: 100%; background: linear-gradient(90deg, #d4a24e, #f0c674); display: flex; align-items: center; padding: 0 20px; font-size: 2rem; font-weight: 800; color: #1a1a1a;">1,2M kr/år</div>
-                                        <span style="position: absolute; right: 30px; top: 50%; transform: translateY(-50%); font-size: 2.5rem;">⚠️</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-top: 60px; font-size: 1.8rem; color: #d4a24e; text-align: center; font-weight: 700;">
-                                SKILLNAD: 6X mer än man trodde
-                            </div>
-                            
-                            <div style="position: absolute; bottom: 40px; right: 40px; font-size: 1.2rem; font-weight: 700; color: #d4a24e; font-family: 'IBM Plex Mono', monospace;">
-                                PRODLYTICS
-                            </div>
+                            <div style="margin-top:60px;font-size:1.8rem;color:#d4a24e;text-align:center;font-weight:700;">SKILLNAD: 6X mer än man trodde</div>
+                            <div style="position:absolute;bottom:40px;right:40px;font-size:1.2rem;font-weight:700;color:#d4a24e;font-family:'IBM Plex Mono',monospace;">PRODLYTICS</div>
                         </div>
-                        
-                        <!-- Slide 3 -->
-                        <div class="carousel-slide" style="min-width: 100%; aspect-ratio: 1/1; background: #1a1a1a; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px;">
-                            <div style="font-size: 3rem; font-weight: 800; color: #d4a24e; text-align: center; margin-bottom: 80px;">
-                                RESULTATET
+                        <div class="carousel-slide" style="min-width:100%;aspect-ratio:1/1;background:#1a1a1a;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;">
+                            <div style="font-size:3rem;font-weight:800;color:#d4a24e;text-align:center;margin-bottom:80px;">RESULTATET</div>
+                            <div style="width:100%;max-width:600px;margin-bottom:80px;">
+                                <div style="display:flex;align-items:center;margin-bottom:40px;"><div style="font-size:3rem;color:#d4a24e;margin-right:30px;min-width:60px;">✓</div><div style="font-size:2.2rem;color:#ffffff;font-weight:600;">15% högre output</div></div>
+                                <div style="display:flex;align-items:center;margin-bottom:40px;"><div style="font-size:3rem;color:#d4a24e;margin-right:30px;min-width:60px;">✓</div><div style="font-size:2.2rem;color:#ffffff;font-weight:600;">Samma budget</div></div>
+                                <div style="display:flex;align-items:center;"><div style="font-size:3rem;color:#d4a24e;margin-right:30px;min-width:60px;">✓</div><div style="font-size:2.2rem;color:#ffffff;font-weight:600;">Inget nytt underhåll</div></div>
                             </div>
-                            
-                            <div style="width: 100%; max-width: 600px; margin-bottom: 80px;">
-                                <div style="display: flex; align-items: center; margin-bottom: 40px;">
-                                    <div style="font-size: 3rem; color: #d4a24e; margin-right: 30px; min-width: 60px;">✓</div>
-                                    <div style="font-size: 2.2rem; color: #ffffff; font-weight: 600;">15% högre output</div>
-                                </div>
-                                <div style="display: flex; align-items: center; margin-bottom: 40px;">
-                                    <div style="font-size: 3rem; color: #d4a24e; margin-right: 30px; min-width: 60px;">✓</div>
-                                    <div style="font-size: 2.2rem; color: #ffffff; font-weight: 600;">Samma budget</div>
-                                </div>
-                                <div style="display: flex; align-items: center; margin-bottom: 40px;">
-                                    <div style="font-size: 3rem; color: #d4a24e; margin-right: 30px; min-width: 60px;">✓</div>
-                                    <div style="font-size: 2.2rem; color: #ffffff; font-weight: 600;">Inget nytt underhåll</div>
-                                </div>
-                            </div>
-                            
-                            <div style="width: 100%; max-width: 600px; background: rgba(212, 162, 78, 0.1); border-left: 5px solid #d4a24e; padding: 40px; border-radius: 10px;">
-                                <div style="font-size: 2rem; color: #d4a24e; margin-bottom: 20px; font-weight: 700;">METODEN?</div>
-                                <div style="font-size: 2rem; color: #ffffff; line-height: 1.4; font-weight: 600;">
-                                    <span style="color: #d4a24e;">Rätt</span> underhåll.<br>
-                                    Inte <span style="color: #d4a24e;">mer</span> underhåll.
-                                </div>
-                            </div>
-                            
-                            <div style="position: absolute; bottom: 40px; right: 40px; font-size: 1.2rem; font-weight: 700; color: #d4a24e; font-family: 'IBM Plex Mono', monospace;">
-                                PRODLYTICS
-                            </div>
+                            <div style="width:100%;max-width:600px;background:rgba(212,162,78,0.1);border-left:5px solid #d4a24e;padding:40px;border-radius:10px;"><div style="font-size:2rem;color:#d4a24e;margin-bottom:20px;font-weight:700;">METODEN?</div><div style="font-size:2rem;color:#ffffff;line-height:1.4;font-weight:600;"><span style="color:#d4a24e;">Rätt</span> underhåll.<br>Inte <span style="color:#d4a24e;">mer</span> underhåll.</div></div>
+                            <div style="position:absolute;bottom:40px;right:40px;font-size:1.2rem;font-weight:700;color:#d4a24e;font-family:'IBM Plex Mono',monospace;">PRODLYTICS</div>
                         </div>
-                        
-                        <!-- Slide 4 -->
-                        <div class="carousel-slide" style="min-width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px;">
-                            <div style="font-size: 2.8rem; font-weight: 700; color: #ffffff; text-align: center; margin-bottom: 60px;">
-                                KÄNNER DU IGEN DETTA?
-                            </div>
-                            
-                            <div style="font-size: 2.5rem; font-weight: 600; color: #d4a24e; text-align: center; line-height: 1.4; margin-bottom: 80px;">
-                                Kanske dags för nya ögon<br>
-                                på er produktion?
-                            </div>
-                            
-                            <div style="font-size: 2.2rem; color: #ffffff; text-align: center; margin-bottom: 20px;">
-                                Första mötet:<br>
-                                <span style="font-size: 2.5rem; color: #d4a24e; font-weight: 800;">KOSTNADSFRITT</span>
-                            </div>
-                            
-                            <div style="background: #d4a24e; padding: 40px 80px; border-radius: 20px; margin-top: 60px; box-shadow: 0 10px 40px rgba(212, 162, 78, 0.3);">
-                                <div style="font-size: 2.5rem; color: #1a1a1a; margin-bottom: 10px;">👉</div>
-                                <div style="font-size: 3rem; font-weight: 800; color: #1a1a1a; font-family: 'IBM Plex Mono', monospace;">prodlytics.se</div>
-                            </div>
-                            
-                            <div style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); font-size: 1.5rem; font-weight: 700; color: #d4a24e; font-family: 'IBM Plex Mono', monospace; letter-spacing: 3px;">
-                                PRODLYTICS
-                            </div>
+                        <div class="carousel-slide" style="min-width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,#2a2a2a 0%,#1a1a1a 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;">
+                            <div style="font-size:2.8rem;font-weight:700;color:#ffffff;text-align:center;margin-bottom:60px;">KÄNNER DU IGEN DETTA?</div>
+                            <div style="font-size:2.5rem;font-weight:600;color:#d4a24e;text-align:center;line-height:1.4;margin-bottom:80px;">Kanske dags för nya ögon<br>på er produktion?</div>
+                            <div style="font-size:2.2rem;color:#ffffff;text-align:center;margin-bottom:20px;">Första mötet:<br><span style="font-size:2.5rem;color:#d4a24e;font-weight:800;">KOSTNADSFRITT</span></div>
+                            <div style="background:#d4a24e;padding:40px 80px;border-radius:20px;margin-top:60px;box-shadow:0 10px 40px rgba(212,162,78,0.3);"><div style="font-size:3rem;font-weight:800;color:#1a1a1a;font-family:'IBM Plex Mono',monospace;">prodlytics.se</div></div>
+                            <div style="position:absolute;bottom:50px;left:50%;transform:translateX(-50%);font-size:1.5rem;font-weight:700;color:#d4a24e;font-family:'IBM Plex Mono',monospace;letter-spacing:3px;">PRODLYTICS</div>
                         </div>
-                        
                     </div>
                 </div>
-                
-                <!-- Navigation Arrows -->
-                <button id="prevBtn" style="position: absolute; left: -60px; top: 50%; transform: translateY(-50%); background: var(--accent); color: var(--primary); border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: all 0.3s ease; z-index: 10;">
-                    ←
-                </button>
-                <button id="nextBtn" style="position: absolute; right: -60px; top: 50%; transform: translateY(-50%); background: var(--accent); color: var(--primary); border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: all 0.3s ease; z-index: 10;">
-                    →
-                </button>
-                
-                <!-- Dots Navigation -->
-                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 30px;">
-                    <div class="carousel-dot" data-slide="0" style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent); cursor: pointer; transition: all 0.3s ease;"></div>
-                    <div class="carousel-dot" data-slide="1" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(212, 162, 78, 0.3); cursor: pointer; transition: all 0.3s ease;"></div>
-                    <div class="carousel-dot" data-slide="2" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(212, 162, 78, 0.3); cursor: pointer; transition: all 0.3s ease;"></div>
-                    <div class="carousel-dot" data-slide="3" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(212, 162, 78, 0.3); cursor: pointer; transition: all 0.3s ease;"></div>
+                <button id="prevBtn" style="position:absolute;left:-60px;top:50%;transform:translateY(-50%);background:var(--accent);color:var(--primary);border:none;width:50px;height:50px;border-radius:50%;font-size:1.5rem;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:all 0.3s ease;z-index:10;">←</button>
+                <button id="nextBtn" style="position:absolute;right:-60px;top:50%;transform:translateY(-50%);background:var(--accent);color:var(--primary);border:none;width:50px;height:50px;border-radius:50%;font-size:1.5rem;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:all 0.3s ease;z-index:10;">→</button>
+                <div style="display:flex;justify-content:center;gap:10px;margin-top:30px;">
+                    <div class="carousel-dot" data-slide="0" style="width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;transition:all 0.3s ease;"></div>
+                    <div class="carousel-dot" data-slide="1" style="width:12px;height:12px;border-radius:50%;background:rgba(212,162,78,0.3);cursor:pointer;transition:all 0.3s ease;"></div>
+                    <div class="carousel-dot" data-slide="2" style="width:12px;height:12px;border-radius:50%;background:rgba(212,162,78,0.3);cursor:pointer;transition:all 0.3s ease;"></div>
+                    <div class="carousel-dot" data-slide="3" style="width:12px;height:12px;border-radius:50%;background:rgba(212,162,78,0.3);cursor:pointer;transition:all 0.3s ease;"></div>
                 </div>
             </div>
-            
-            <!-- CTA Below Carousel -->
-            <div style="text-align: center; margin-top: 4rem;">
-                <a href="#kontakt" style="display: inline-block; background: var(--accent); color: var(--primary); padding: 1.2rem 3rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease;">
-                    Boka kostnadsfritt möte
-                </a>
-            </div>
+            <div style="text-align:center;margin-top:4rem;"><a href="#kontakt" style="display:inline-block;background:var(--accent);color:var(--primary);padding:1.2rem 3rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.1rem;transition:all 0.3s ease;">Boka kostnadsfritt möte</a></div>
         </div>
     </section>
-    
+
     <section class="about-section" id="om">
         <div class="about-container">
             <span class="section-tag">OM OSS</span>
             <h2>Datadriven produktionsutveckling</h2>
-            
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                Prodlytics grundades med målet att hjälpa tillverkande företag att nå sin fulla potential genom modern, datadriven produktionsutveckling.
-            </p>
-            
-            <div class="about-highlight">
-                <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem;">Vår approach</h3>
-                <p>
-                    Med utbildning inom produktionsutveckling och gedigen erfarenhet från industrin, kombinerar vi teoretisk kunskap med praktisk tillämpning. Vi tror på <strong>mätbara resultat</strong> - inte fluffiga konsultrapporter utan konkreta förbättringar som syns på er bottom line.
-                </p>
-                <p>
-                    Varje uppdrag börjar med <strong>data, inte antaganden</strong>. Vi mäter er nuläge, identifierar de största förlustkällorna, och skapar en prioriterad handlingsplan.
-                </p>
-            </div>
-            
+            <p style="font-size:1.2rem;margin-bottom:2rem;">Prodlytics grundades med målet att hjälpa tillverkande företag att nå sin fulla potential genom modern, datadriven produktionsutveckling.</p>
+            <div class="about-highlight"><h3 style="font-size:1.4rem;font-weight:700;margin-bottom:1rem;">Vår approach</h3><p>Med utbildning inom produktionsutveckling och gedigen erfarenhet från industrin, kombinerar vi teoretisk kunskap med praktisk tillämpning. Vi tror på <strong>mätbara resultat</strong> - inte fluffiga konsultrapporter utan konkreta förbättringar som syns på er bottom line.</p><p>Varje uppdrag börjar med <strong>data, inte antaganden</strong>. Vi mäter er nuläge, identifierar de största förlustkällorna, och skapar en prioriterad handlingsplan.</p></div>
             <h3>Vårt arbetssätt</h3>
-            
             <div class="workflow-grid">
-                <div class="workflow-item">
-                    <div class="workflow-number">01</div>
-                    <h4>Analys</h4>
-                    <p>Vi börjar alltid med att förstå er verksamhet. Faktisk OEE-mätning, flödesanalys, identifiering av förlustkällor. Inga gissningar - bara data.</p>
-                </div>
-                
-                <div class="workflow-item">
-                    <div class="workflow-number">02</div>
-                    <h4>Prioritering</h4>
-                    <p>Vilka åtgärder ger störst effekt? Vi räknar på ROI för varje förbättringsområde och prioriterar efter ekonomisk nytta.</p>
-                </div>
-                
-                <div class="workflow-item">
-                    <div class="workflow-number">03</div>
-                    <h4>Implementering</h4>
-                    <p>Vi rullar ut förbättringar steg för steg. Vi bygger också kompetens internt hos er så att förbättringarna blir permanenta.</p>
-                </div>
-                
-                <div class="workflow-item">
-                    <div class="workflow-number">04</div>
-                    <h4>Uppföljning</h4>
-                    <p>Kontinuerlig mätning och justering. Vi följer upp resultaten och säkerställer att förbättringarna håller över tid.</p>
-                </div>
+                <div class="workflow-item"><div class="workflow-number">01</div><h4>Analys</h4><p>Vi börjar alltid med att förstå er verksamhet. Faktisk OEE-mätning, flödesanalys, identifiering av förlustkällor. Inga gissningar - bara data.</p></div>
+                <div class="workflow-item"><div class="workflow-number">02</div><h4>Prioritering</h4><p>Vilka åtgärder ger störst effekt? Vi räknar på ROI för varje förbättringsområde och prioriterar efter ekonomisk nytta.</p></div>
+                <div class="workflow-item"><div class="workflow-number">03</div><h4>Implementering</h4><p>Vi rullar ut förbättringar steg för steg. Vi bygger också kompetens internt hos er så att förbättringarna blir permanenta.</p></div>
+                <div class="workflow-item"><div class="workflow-number">04</div><h4>Uppföljning</h4><p>Kontinuerlig mätning och justering. Vi följer upp resultaten och säkerställer att förbättringarna håller över tid.</p></div>
             </div>
-            
-            <div style="background: var(--primary); color: var(--text-white); padding: 3rem; margin: 3rem 0;">
-                <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center;">
-                    Vi lyckas när ni lyckas
-                </p>
-                <p style="color: rgba(255, 255, 255, 0.75); font-size: 1rem; text-align: center;">
-                    Därför mäter vi alltid resultat och tar ansvar för att leverera faktiska förbättringar.
-                </p>
-            </div>
-            
+            <div style="background:var(--primary);color:var(--text-white);padding:3rem;margin:3rem 0;"><p style="font-size:1.3rem;font-weight:600;margin-bottom:0.5rem;text-align:center;">Vi lyckas när ni lyckas</p><p style="color:rgba(255,255,255,0.75);font-size:1rem;text-align:center;">Därför mäter vi alltid resultat och tar ansvar för att leverera faktiska förbättringar.</p></div>
             <h3>För vem passar vi?</h3>
-            <p>
-                Vi passar bäst för <strong>tillverkande företag med 20-500 anställda</strong> som vill förbättra sin produktionseffektivitet genom datadriven analys och systematiskt arbete.
-            </p>
+            <p>Vi passar bäst för <strong>tillverkande företag med 20-500 anställda</strong> som vill förbättra sin produktionseffektivitet genom datadriven analys och systematiskt arbete.</p>
         </div>
     </section>
-    
-    <!-- Konsult Section -->
-    <section class="konsult-section" id="konsult" style="background: var(--bg); padding: 6rem 2rem;">
-        <div style="max-width: 1200px; margin: 0 auto;">
+
+    <section class="konsult-section" id="konsult" style="background:var(--bg);padding:6rem 2rem;">
+        <div style="max-width:1200px;margin:0 auto;">
             <span class="section-tag">KONSULTTJÄNSTER</span>
-            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem;">Anlita mig som konsult</h2>
-            
-            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 4rem; text-align: center; color: var(--text-light);">
-                Jag hjälper tillverkande företag att sluta gissa var de ska lägga sina resurser – och börja veta det. På plats hos er eller på distans.
-            </p>
-            
-            <!-- Om Markus -->
-            <div style="background: var(--bg-light); border-left: 4px solid var(--accent); padding: 3rem; border-radius: 12px; margin-bottom: 5rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-                <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; color: var(--accent);">Om Markus</h3>
-                
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--text);">
-                    Jag har <strong>7 år som egenföretagare</strong> och arbetat med utveckling och ledarskap inom tillverkande industri. Det senaste året har jag fokuserat på AI-implementering i produktion – där jag byggt prioriteringslistor och arbetat med prediktivt underhåll för att hjälpa företag se var de förlorar pengar.
-                </p>
-                
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: var(--text);">
-                    <strong>Anlita mig om ert företag behöver nya ögon</strong> för att se var det finns förluster i er produktion. Jag hjälper er optimera och göra produktionen mer lönsam.
-                </p>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                    <div>
-                        <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--text);">Utbildning & Kompetens</h4>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                                <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
-                                Industriell ekonomi
-                            </li>
-                            <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                                <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
-                                Produktionsutveckling 4.0
-                            </li>
-                            <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                                <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
-                                Hållbar produktion
-                            </li>
-                            <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                                <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
-                                6 AI-kurser
-                            </li>
-                            <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                                <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
-                                Programmering
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--text);">Certifieringar</h4>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                                <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
-                                2 Lean-kurser
-                            </li>
-                            <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                                <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
-                                MTM tidsstudier
-                            </li>
-                            <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                                <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
-                                2 Ledarskapskurser
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div style="background: rgba(212, 162, 78, 0.1); border-left: 3px solid var(--accent); padding: 1.5rem; margin-top: 2rem; border-radius: 8px;">
-                    <p style="font-size: 1.05rem; line-height: 1.7; margin: 0; color: var(--text); font-style: italic;">
-                        "Jag är väldigt driven och har i många år intresserat mig för effektivisering. Jag ser att saker alltid kan utvecklas. Det finns aldrig en 100% perfekt produktion idag – men det är där möjligheterna finns."
-                    </p>
+            <h2 style="font-size:2.5rem;font-weight:800;margin-bottom:2rem;">Anlita mig som konsult</h2>
+            <p style="font-size:1.2rem;max-width:800px;margin:0 auto 4rem;text-align:center;color:var(--text-light);">Jag hjälper tillverkande företag att sluta gissa var de ska lägga sina resurser – och börja veta det.</p>
+            <div style="background:var(--bg-light);border-left:4px solid var(--accent);padding:3rem;border-radius:12px;margin-bottom:5rem;max-width:900px;margin-left:auto;margin-right:auto;">
+                <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:2rem;color:var(--accent);">Om Markus</h3>
+                <p style="font-size:1.1rem;line-height:1.8;margin-bottom:1.5rem;">Jag har <strong>7 år som egenföretagare</strong> och arbetat med utveckling och ledarskap inom tillverkande industri.</p>
+                <p style="font-size:1.1rem;line-height:1.8;margin-bottom:2rem;"><strong>Anlita mig om ert företag behöver nya ögon</strong> för att se var det finns förluster i er produktion.</p>
+                <div style="background:rgba(212,162,78,0.1);border-left:3px solid var(--accent);padding:1.5rem;margin-top:2rem;border-radius:8px;"><p style="font-size:1.05rem;line-height:1.7;margin:0;font-style:italic;">"Jag är väldigt driven och har i många år intresserat mig för effektivisering. Det finns aldrig en 100% perfekt produktion idag – men det är där möjligheterna finns."</p></div>
+            </div>
+            <div style="background:var(--primary);color:var(--text-white);padding:4rem 2rem;border-radius:12px;text-align:center;margin-bottom:4rem;">
+                <h3 style="font-size:2rem;font-weight:700;margin-bottom:3rem;">Investering</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:900px;margin:0 auto;">
+                    <div><div style="font-size:1.1rem;margin-bottom:0.5rem;opacity:0.8;">Timpris</div><div style="font-size:2.5rem;font-weight:800;color:var(--accent);margin-bottom:0.5rem;">900 kr</div><div style="opacity:0.7;">per timme + moms</div></div>
+                    <div style="background:rgba(212,162,78,0.1);border:2px solid var(--accent);padding:2rem;border-radius:12px;"><div style="font-size:1.1rem;margin-bottom:0.5rem;opacity:0.8;">Pilot / Projekt</div><div style="font-size:2.5rem;font-weight:800;color:var(--accent);margin-bottom:0.5rem;">Från 10 000 kr</div><div style="opacity:0.7;">fast pris, 5-7 dagar</div></div>
+                    <div><div style="font-size:1.1rem;margin-bottom:0.5rem;opacity:0.8;">Större uppdrag</div><div style="font-size:2.5rem;font-weight:800;color:var(--accent);margin-bottom:0.5rem;">Offert</div><div style="opacity:0.7;">kontakta mig</div></div>
                 </div>
             </div>
-            
-            <!-- Services Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 5rem;">
-                <div style="background: var(--bg-light); border: 2px solid var(--border); padding: 2.5rem; border-radius: 12px;">
-                    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--accent); margin-bottom: 1rem;">01</div>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Produktionsoptimering</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Datadrivna prioriteringslistor som visar var ni förlorar mest pengar.</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">→</span>
-                            OEE-analys & datainsamling
-                        </li>
-                        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">→</span>
-                            Identifiering av förlustkällor
-                        </li>
-                        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">→</span>
-                            ROI-beräkningar per åtgärd
-                        </li>
-                    </ul>
-                </div>
-                
-                <div style="background: var(--bg-light); border: 2px solid var(--border); padding: 2.5rem; border-radius: 12px;">
-                    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--accent); margin-bottom: 1rem;">02</div>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">AI & Digitalisering</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Praktisk AI-implementering och Industri 4.0-strategier.</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">→</span>
-                            Automatiseringspotential
-                        </li>
-                        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">→</span>
-                            Prediktivt underhåll
-                        </li>
-                        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">→</span>
-                            Utbildning av personal
-                        </li>
-                    </ul>
-                </div>
-                
-                <div style="background: var(--bg-light); border: 2px solid var(--border); padding: 2.5rem; border-radius: 12px;">
-                    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--accent); margin-bottom: 1rem;">03</div>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Ledarskap & Utveckling</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Stöd i förändring med fokus på ledarskap och kultur.</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">→</span>
-                            Ledarskapsutveckling
-                        </li>
-                        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">→</span>
-                            Teamutveckling
-                        </li>
-                        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light);">
-                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">→</span>
-                            Change management
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Pricing -->
-            <div style="background: var(--primary); color: var(--text-white); padding: 4rem 2rem; border-radius: 12px; text-align: center; margin-bottom: 4rem;">
-                <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 3rem;">Investering</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto;">
-                    <div>
-                        <div style="font-size: 1.1rem; margin-bottom: 0.5rem; opacity: 0.8;">Timpris</div>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">900 kr</div>
-                        <div style="opacity: 0.7;">per timme + moms</div>
-                    </div>
-                    <div style="background: rgba(212, 162, 78, 0.1); border: 2px solid var(--accent); padding: 2rem; border-radius: 12px;">
-                        <div style="font-size: 1.1rem; margin-bottom: 0.5rem; opacity: 0.8;">Pilot / Projekt</div>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">Från 10 000 kr</div>
-                        <div style="opacity: 0.7;">fast pris, 5-7 dagar</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 1.1rem; margin-bottom: 0.5rem; opacity: 0.8;">Större uppdrag</div>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">Offert</div>
-                        <div style="opacity: 0.7;">kontakta mig</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- CTA -->
-            <div style="text-align: center;">
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-light);">
-                    <strong>Första mötet är kostnadsfritt.</strong> Vi diskuterar era utmaningar och jag delar mina tankar.
-                </p>
-                <a href="#kontakt" style="display: inline-block; background: var(--accent); color: var(--primary); padding: 1.2rem 3rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease;">
-                    Boka kostnadsfritt möte
-                </a>
-            </div>
+            <div style="text-align:center;"><p style="font-size:1.2rem;margin-bottom:2rem;color:var(--text-light);"><strong>Första mötet är kostnadsfritt.</strong></p><a href="#kontakt" style="display:inline-block;background:var(--accent);color:var(--primary);padding:1.2rem 3rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.1rem;">Boka kostnadsfritt möte</a></div>
         </div>
     </section>
-    
+
     <section class="contact-section" id="kontakt">
         <div class="contact-container">
             <h2>Kom igång idag</h2>
             <p>Kontakta oss för en kostnadsfri genomgång av er produktionseffektivitet.</p>
-            <div class="contact-box">
-                <a href="mailto:markus@prodlytics.se">markus@prodlytics.se</a>
-            </div>
+            <div class="contact-box"><a href="mailto:markus@prodlytics.se">markus@prodlytics.se</a></div>
         </div>
     </section>
-    
-    <footer>
-        <p>&copy; 2025 Prodlytics. Produktionseffektivitet genom data.</p>
-    </footer>
-    
+
+    <footer><p>&copy; 2026 Prodlytics. Produktionseffektivitet genom data.</p></footer>
+
     <script>
-        // Production value mini-calculator
         const productsInput = document.getElementById('productsPerHour');
         const priceInput = document.getElementById('pricePerProduct');
         const calculatedValueDisplay = document.getElementById('calculatedValue');
         const productionValueInput = document.getElementById('productionValuePerHour');
-        
         function updateProductionValue() {
             const products = parseFloat(productsInput.value) || 0;
             const price = parseFloat(priceInput.value) || 0;
             const value = products * price;
-            
-            if (value > 0) {
-                calculatedValueDisplay.textContent = Math.round(value).toLocaleString('sv-SE') + ' kr';
-                calculatedValueDisplay.style.color = 'var(--accent)';
-                
-                // Auto-fill main calculator
-                productionValueInput.value = Math.round(value);
-                productionValueInput.style.background = 'rgba(212, 162, 78, 0.1)';
-                productionValueInput.style.borderColor = 'var(--accent)';
-            } else {
-                calculatedValueDisplay.textContent = '0 kr';
-                calculatedValueDisplay.style.color = 'rgba(255,255,255,0.5)';
-            }
+            if (value > 0) { calculatedValueDisplay.textContent = Math.round(value).toLocaleString('sv-SE') + ' kr'; calculatedValueDisplay.style.color = 'var(--accent)'; productionValueInput.value = Math.round(value); productionValueInput.style.background = 'rgba(212,162,78,0.1)'; productionValueInput.style.borderColor = 'var(--accent)'; } else { calculatedValueDisplay.textContent = '0 kr'; calculatedValueDisplay.style.color = 'rgba(255,255,255,0.5)'; }
         }
-        
         productsInput.addEventListener('input', updateProductionValue);
         priceInput.addEventListener('input', updateProductionValue);
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-        
-        // Calculator
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
         document.getElementById('oeeCalculator').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const currentOEE = parseFloat(document.getElementById('currentOEE').value);
             const unplannedDowntime = parseFloat(document.getElementById('unplannedDowntime').value);
             const productionValuePerHour = parseFloat(document.getElementById('productionValuePerHour').value);
@@ -1420,236 +398,52 @@
             const maintenanceStrategy = document.getElementById('maintenanceStrategy').value;
             const avgStopCost = parseFloat(document.getElementById('avgStopCost').value);
             const stopsPerMonth = parseFloat(document.getElementById('stopsPerMonth').value);
-            
-            // Realistic target OEE based on current state
             let targetOEE;
-            if (currentOEE < 60) {
-                targetOEE = Math.min(currentOEE + 10, 70); // Max 10% improvement
-            } else if (currentOEE < 70) {
-                targetOEE = Math.min(currentOEE + 8, 78); // Max 8% improvement
-            } else if (currentOEE < 80) {
-                targetOEE = Math.min(currentOEE + 5, 82); // Max 5% improvement
-            } else {
-                targetOEE = Math.min(currentOEE + 3, 85); // Max 3% improvement
-            }
-            
-            const oeeImprovement = targetOEE - currentOEE;
-            
-            // Calculate actual production losses (REALISTIC - only count the improvement)
+            if (currentOEE < 60) targetOEE = Math.min(currentOEE + 10, 70);
+            else if (currentOEE < 70) targetOEE = Math.min(currentOEE + 8, 78);
+            else if (currentOEE < 80) targetOEE = Math.min(currentOEE + 5, 82);
+            else targetOEE = Math.min(currentOEE + 3, 85);
             const annualProductionHours = productionHoursPerMonth * 12;
-            const currentProductionValue = productionValuePerHour * annualProductionHours * (currentOEE / 100);
-            const improvedProductionValue = productionValuePerHour * annualProductionHours * (targetOEE / 100);
-            const productionValueGain = improvedProductionValue - currentProductionValue;
-            
-            // Calculate unplanned stop costs (realistic reduction based on strategy)
+            const productionValueGain = productionValuePerHour * annualProductionHours * ((targetOEE - currentOEE) / 100);
             const annualUnplannedStopCost = avgStopCost * stopsPerMonth * 12;
-            
-            let stopReductionRate;
-            switch(maintenanceStrategy) {
-                case 'reactive':
-                    stopReductionRate = 0.60; // Can reduce 60% of stops
-                    break;
-                case 'preventive':
-                    stopReductionRate = 0.40; // Can reduce 40% more
-                    break;
-                case 'mixed':
-                    stopReductionRate = 0.50; // Can reduce 50%
-                    break;
-                case 'predictive':
-                    stopReductionRate = 0.20; // Already good, 20% more
-                    break;
-            }
-            
+            let stopReductionRate = maintenanceStrategy === 'reactive' ? 0.60 : maintenanceStrategy === 'preventive' ? 0.40 : maintenanceStrategy === 'mixed' ? 0.50 : 0.20;
             const stopCostSavings = annualUnplannedStopCost * stopReductionRate;
-            
-            // Quality losses (realistic based on OEE level) - SMALLER NUMBERS
-            let qualityLossRate;
-            if (currentOEE < 60) {
-                qualityLossRate = 0.08; // Reduced from 0.12
-            } else if (currentOEE < 70) {
-                qualityLossRate = 0.05; // Reduced from 0.08
-            } else if (currentOEE < 80) {
-                qualityLossRate = 0.03; // Reduced from 0.05
-            } else {
-                qualityLossRate = 0.02; // Reduced from 0.03
-            }
-            
-            const currentAnnualValue = productionValuePerHour * annualProductionHours;
-            const qualityLosses = currentAnnualValue * qualityLossRate;
-            const qualityImprovementRate = 0.30; // Reduced from 0.40
-            const qualitySavings = qualityLosses * qualityImprovementRate;
-            
-            // Overtime and rush costs (conservative estimate)
-            const overtimeCost = annualUnplannedStopCost * 0.15; // Reduced from 0.20
-            const overtimeSavings = overtimeCost * stopReductionRate;
-            
-            // Total annual loss (current state)
-            const totalAnnualLoss = annualUnplannedStopCost + qualityLosses + overtimeCost;
-            
-            // Total savings potential (realistic) - WITH CAP
+            let qualityLossRate = currentOEE < 60 ? 0.08 : currentOEE < 70 ? 0.05 : currentOEE < 80 ? 0.03 : 0.02;
+            const qualitySavings = productionValuePerHour * annualProductionHours * qualityLossRate * 0.30;
+            const overtimeSavings = annualUnplannedStopCost * 0.15 * stopReductionRate;
+            const totalAnnualLoss = annualUnplannedStopCost + (productionValuePerHour * annualProductionHours * qualityLossRate) + (annualUnplannedStopCost * 0.15);
             let savingsPotential = productionValueGain + stopCostSavings + qualitySavings + overtimeSavings;
-            
-            // CAP at reasonable levels based on company size
-            const reasonableMaxSavings = currentAnnualValue * 0.15; // Max 15% of annual production value
-            if (savingsPotential > reasonableMaxSavings) {
-                savingsPotential = reasonableMaxSavings;
-            }
-            
-            document.getElementById('savingsPotential').textContent = 
-                Math.round(savingsPotential).toLocaleString('sv-SE') + ' kr/år';
-            document.getElementById('totalAnnualLoss').textContent = 
-                Math.round(totalAnnualLoss).toLocaleString('sv-SE') + ' kr';
-            
+            const reasonableMaxSavings = productionValuePerHour * annualProductionHours * 0.15;
+            if (savingsPotential > reasonableMaxSavings) savingsPotential = reasonableMaxSavings;
+            document.getElementById('savingsPotential').textContent = Math.round(savingsPotential).toLocaleString('sv-SE') + ' kr/år';
+            document.getElementById('totalAnnualLoss').textContent = Math.round(totalAnnualLoss).toLocaleString('sv-SE') + ' kr';
             document.getElementById('resultsSection').classList.add('show');
             document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            
-            // Track calculator usage in Google Analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'calculator_calculated', {
-                    'event_category': 'Calculator',
-                    'event_label': 'OEE Calculator',
-                    'value': Math.round(savingsPotential)
-                });
-            }
         });
-        
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const company = document.getElementById('company').value;
-            
-            // Get calculator results
-            const savingsPotential = document.getElementById('savingsPotential').textContent;
-            const totalAnnualLoss = document.getElementById('totalAnnualLoss').textContent;
-            
-            const leadData = {
-                timestamp: new Date().toISOString(),
-                name: name,
-                email: email,
-                company: company,
-                savingsPotential: savingsPotential,
-                totalAnnualLoss: totalAnnualLoss,
-                source: 'Prodlytics Hemsida'
-            };
-            
-            // Save to localStorage
-            let leads = JSON.parse(localStorage.getItem('prodlytics_leads') || '[]');
-            leads.push(leadData);
-            localStorage.setItem('prodlytics_leads', JSON.stringify(leads));
-            
-            // Send email notification via Web3Forms (free service)
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Get this from web3forms.com
-                    subject: '🎯 Nytt lead från Prodlytics!',
-                    from_name: 'Prodlytics Calculator',
-                    to: 'markus@prodlytics.se',
-                    message: `
-NYTT LEAD FRÅN KALKYLATORN!
-
-Namn: ${name}
-Email: ${email}
-Företag: ${company}
-
-BERÄKNADE SIFFROR:
-Besparingspotential: ${savingsPotential}
-Total årlig förlust: ${totalAnnualLoss}
-
-Tid: ${new Date().toLocaleString('sv-SE')}
-
----
-Ring inom 24 timmar för bäst conversion! 📞
-                    `
-                })
-            }).catch(err => console.log('Email notification failed:', err));
-            
-            // Track lead in Google Analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'lead_submitted', {
-                    'event_category': 'Lead',
-                    'event_label': company,
-                    'value': 1
-                });
-            }
-            
-            // Show success message
             document.getElementById('leadForm').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
         });
-        
-        function downloadLeads() {
-            const leads = JSON.parse(localStorage.getItem('prodlytics_leads') || '[]');
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(leads, null, 2));
-            const downloadAnchorNode = document = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", "prodlytics-leads.json");
-            downloadAnchorNode.click();
-        }
-        
-        // Carousel functionality
         let currentSlide = 0;
         const track = document.getElementById('carouselTrack');
         const dots = document.querySelectorAll('.carousel-dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
         const totalSlides = 4;
-        
         function goToSlide(n) {
             currentSlide = n;
             if (currentSlide < 0) currentSlide = totalSlides - 1;
             if (currentSlide >= totalSlides) currentSlide = 0;
-            
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.style.background = 'var(--accent)';
-                    dot.style.transform = 'scale(1.2)';
-                } else {
-                    dot.style.background = 'rgba(212, 162, 78, 0.3)';
-                    dot.style.transform = 'scale(1)';
-                }
-            });
+            dots.forEach((dot, index) => { dot.style.background = index === currentSlide ? 'var(--accent)' : 'rgba(212,162,78,0.3)'; dot.style.transform = index === currentSlide ? 'scale(1.2)' : 'scale(1)'; });
         }
-        
-        prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
-        nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-        
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => goToSlide(index));
-        });
-        
-        // Auto-advance carousel every 5 seconds
-        setInterval(() => {
-            goToSlide(currentSlide + 1);
-        }, 5000);
-        
-        // Touch/swipe support
+        document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+        document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+        dots.forEach((dot, index) => { dot.addEventListener('click', () => goToSlide(index)); });
+        setInterval(() => goToSlide(currentSlide + 1), 5000);
         let touchStartX = 0;
-        let touchEndX = 0;
-        
         const carousel = document.getElementById('carouselContainer');
-        carousel.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        
-        carousel.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) {
-                goToSlide(currentSlide + 1);
-            }
-            if (touchEndX - touchStartX > 50) {
-                goToSlide(currentSlide - 1);
-            }
-        });
+        carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+        carousel.addEventListener('touchend', e => { const diff = touchStartX - e.changedTouches[0].screenX; if (diff > 50) goToSlide(currentSlide + 1); if (diff < -50) goToSlide(currentSlide - 1); });
     </script>
 </body>
 </html>
