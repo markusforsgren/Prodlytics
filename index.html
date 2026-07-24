@@ -26,11 +26,11 @@
         .logo-svg { height: 160px; }
         #prevBtn:hover, #nextBtn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 20px rgba(212,162,78,0.4); }
         #prevBtn:active, #nextBtn:active { transform: translateY(-50%) scale(0.95); }
-        .nav-links { display: flex; gap: 3rem; list-style: none; }
-        .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; transition: color 0.3s ease; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; transition: color 0.3s ease; white-space: nowrap; }
         .nav-links a:hover { color: var(--accent); }
-        .nav-tool { color: var(--accent) !important; border: 1px solid var(--accent); padding: 0.3rem 0.8rem !important; border-radius: 4px; }
-        .nav-tool:hover { background: var(--accent); color: var(--primary) !important; }
+        .nav-tool { background: var(--primary) !important; color: white !important; padding: 0.45rem 1.1rem !important; border-radius: 6px; font-weight: 700 !important; letter-spacing: 0.03em; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .nav-tool:hover { background: var(--accent) !important; color: white !important; }
         .hero-section { margin-top: 80px; min-height: 85vh; display: flex; align-items: center; padding: 6rem 2rem 4rem; background: var(--primary); position: relative; }
         .hero-container { max-width: 1400px; margin: 0 auto; }
         .hero-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 2rem; font-weight: 600; }
